@@ -36,6 +36,7 @@ namespace Stepper.WinForms
             this.tb_playLoad = new System.Windows.Forms.TextBox();
             this.tb_crc = new System.Windows.Forms.TextBox();
             this.tb_test = new System.Windows.Forms.TextBox();
+            this.cb_writeFile = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btn_connect
@@ -94,11 +95,23 @@ namespace Stepper.WinForms
             this.tb_test.Size = new System.Drawing.Size(100, 22);
             this.tb_test.TabIndex = 3;
             // 
+            // cb_writeFile
+            // 
+            this.cb_writeFile.AutoSize = true;
+            this.cb_writeFile.Location = new System.Drawing.Point(262, 32);
+            this.cb_writeFile.Name = "cb_writeFile";
+            this.cb_writeFile.Size = new System.Drawing.Size(142, 21);
+            this.cb_writeFile.TabIndex = 4;
+            this.cb_writeFile.Text = "Записать в файл";
+            this.cb_writeFile.UseVisualStyleBackColor = true;
+            this.cb_writeFile.CheckedChanged += new System.EventHandler(this.cb_writeFile_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cb_writeFile);
             this.Controls.Add(this.tb_test);
             this.Controls.Add(this.tb_crc);
             this.Controls.Add(this.tb_playLoad);
@@ -122,6 +135,7 @@ namespace Stepper.WinForms
         private System.Windows.Forms.TextBox tb_playLoad;
         private System.Windows.Forms.TextBox tb_crc;
         private System.Windows.Forms.TextBox tb_test;
+        private System.Windows.Forms.CheckBox cb_writeFile;
     }
 }
 
