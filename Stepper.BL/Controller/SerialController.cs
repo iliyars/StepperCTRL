@@ -10,9 +10,28 @@ namespace Stepper.BL.Controller
     {
         private SerialPort _serialPort = new SerialPort();
         private const int MESSAGE_LENGTH = 5; //Количество байт в одном сообщении
+        public byte[] ReceivedCode { get; }
+        /// <summary>
+        /// Код операции.
+        /// </summary>
+        public byte OperationCode { get; set; }
+        /// <summary>
+        /// Код данных.
+        /// </summary>
+        public UInt16 PlayLoad { get; set; }
+        /// <summary>
+        /// Код контрольной суммы.
+        /// </summary>
+        public byte CRC { get; set; }
+
+
         public event EventHandler DataReceived;
 
-
+        /// <summary>
+        /// Пдключение к порту.
+        /// </summary>
+        /// <param name="portName">Имя порта.</param>
+        /// <param name="baudRate">Бод рейт.</param>
         public void ConnectionSerial(string portName, int baudRate)
         {
             _serialPort = new SerialPort();
@@ -48,7 +67,8 @@ namespace Stepper.BL.Controller
                     {
                         byte[] dataReceived = new byte[dataLength];
                         _serialPort.Read(dataReceived, 0, dataLength); // Заполняем буфер байтами
-                        CheckReceivedCode(dataReceived);
+                        bool isDataGood = CheckReceivedCode(dataReceived);
+                        SetCode(dataReceived, isDataGood);
                     }
                 }
                 catch (Exception ex)
@@ -64,16 +84,28 @@ namespace Stepper.BL.Controller
         /// <returns>string[]</returns>
         public string[] GetPorts()
         {
-            string[] ports = SerialPort.GetPortNames();
-            return ports;
+            return SerialPort.GetPortNames();
         }
 
-
-        private void CheckReceivedCode(byte[] dataReceived)
+        /// <summary>
+        /// Проверка коректности полученных данных.
+        /// </summary>
+        /// <param name="dataReceived">массив полученных байт.</param>
+        /// <returns>bool</returns>
+        private bool CheckReceivedCode(byte[] dataReceived)
         {
-
+            //TODO: Проверка полученных  данных
+            return true;
         }
-
+        private void SetCode(byte[] dataReceived, bool isDataGood)
+        {
+            OperationCode = dataReceived[0];
+            byte[] tmp = { dataReceived[1], dataReceived[2] };
+            PlayLoad = BitConverter.ToUInt16(tmp, 0);
+            CRC = dataReceived[3];
+            if (DataReceived != null) DataReceived(this, EventArgs.Empty);
+        }
+        
 
     }
 }
