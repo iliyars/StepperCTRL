@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AngleConverter.cs" />
     <Compile Include="Controller\FileSaver.cs" />
     <Compile Include="Controller\SerialController.cs" />
+    <Compile Include="Model\Angle.cs" />
     <Compile Include="Model\ConfigData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

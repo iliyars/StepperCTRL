@@ -21,7 +21,6 @@ namespace Stepper.BL.Controller
         {
             if (check)
             {
-                _writeDataFileState = true;
                 string date = DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss");
                 string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
                 string path = folderPath + "\\" + date + ".txt";
@@ -34,11 +33,7 @@ namespace Stepper.BL.Controller
                 {
                     throw new Exception(ex.Message);
                 }
-            }
-            else
-            {
-                _writeDataFileState = false;
-            }
+            } 
         }
 
         /// <summary>

@@ -97,6 +97,12 @@ namespace Stepper.BL.Controller
             //TODO: Проверка полученных  данных
             return true;
         }
+
+        /// <summary>
+        /// Если данные корректны - сохраняем их.
+        /// </summary>
+        /// <param name="dataReceived">полученные данные</param>
+        /// <param name="isDataGood">флаг проверки</param>
         private void SetCode(byte[] dataReceived, bool isDataGood)
         {
             OperationCode = dataReceived[0];
@@ -106,6 +112,9 @@ namespace Stepper.BL.Controller
             if (DataReceived != null) DataReceived(this, EventArgs.Empty);
         }
         
-
+        public void DisconnectSerial()
+        {
+            _serialPort.Close();
+        }
     }
 }
