@@ -9,6 +9,7 @@ namespace Stepper.BL.Controller
     public class SerialController
     {
         private SerialPort _serialPort = new SerialPort();
+
         private const int MESSAGE_LENGTH = 5; //Количество байт в одном сообщении
         public byte[] ReceivedCode { get; }
         /// <summary>

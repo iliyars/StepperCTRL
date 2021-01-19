@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Windows.Forms;
 using Stepper.BL.Controller;
@@ -14,8 +17,9 @@ namespace Stepper.WinForms
     public partial class MainForm : Form
     {
         readonly SerialController serialController = new SerialController();
-        readonly FileSaver fileSaver = new FileSaver();
+        readonly FileManager fileManager = new FileManager();
         readonly AngleConverter angleConverter = new AngleConverter();
+        Dictionary<string, double> config;
 
         private bool dirY = true; // Направление вращения по Y
         private bool dirZ = true; // Направление вращения по Я
@@ -25,14 +29,18 @@ namespace Stepper.WinForms
         {
             InitializeComponent();
             SetPorts();
-
-
+            fileManager.ReadBinFile();
+            var tmp = fileManager.ShowCurrentConfig();
+            
+            tb_fileName.Text = fileManager.GetFilePath();
+            fileManager.FileClosed += FileManager_FileClosed;
             serialController.DataReceived += SerialController_DataReceived;
             btn_connect.Click += Btn_connect_Click;
             cb_writeFile.Click += Cb_writeFile_Click;
             btn_disconnect.Click += Btn_disconnect_Click;
             gb_newPositionY.Click += Gb_newPositionY_Click;
             gb_newPosZ.Click += Gb_newPosZ_Click;
+            
             foreach (Control ctrl in gb_newPositionY.Controls)
             {
                 ctrl.Click += Ctrl_Click;
@@ -44,6 +52,17 @@ namespace Stepper.WinForms
            
         }
 
+        private void FileManager_FileClosed(object sender, EventArgs e)
+        {
+            fileManager.ReadCurrentConfigFile();
+            Dictionary<string, double> currConfig = fileManager.ShowCurrentConfig();
+            tb_text.Clear();
+            foreach (var pair in currConfig)
+            {
+                tb_text.AppendText($"{pair.Key}-{pair.Value}\n\n");
+            }
+
+        }
 
         private void Btn_connect_Click(object sender, EventArgs e)
         {
@@ -56,8 +75,8 @@ namespace Stepper.WinForms
 
         private void Cb_writeFile_Click(object sender, EventArgs e)
         {
-            fileSaver.CreateDataFile(cb_writeFile.Checked);
-            tb_crc.Text = cb_writeFile.Checked.ToString();
+            fileManager.CreateDataFile(cb_writeFile.Checked);
+           
         }
 
       
@@ -71,11 +90,9 @@ namespace Stepper.WinForms
             i++;
             this.BeginInvoke((Action)(() =>
             {
-                tb_code.Text = serialController.OperationCode.ToString();
-                tb_test.Text = i.ToString();
-                tb_playLoad.Text = serialController.PlayLoad.ToString();
+                //TODO: Отображение пришедших данных.
             }));
-            fileSaver.WriteDataFile(cb_writeFile.Checked, serialController.OperationCode, serialController.PlayLoad, serialController.CRC);
+            fileManager.WriteDataFile(cb_writeFile.Checked, serialController.OperationCode, serialController.PlayLoad, serialController.CRC);
         }
         /// <summary>
         /// Получение доступных com-портов в UI
@@ -90,7 +107,7 @@ namespace Stepper.WinForms
                 //this.TopMost = true;
                 //this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
-
+          
         }
         #region Обработка нажатий кнопок задания угла Y
         private void Gb_newPositionY_Click(object sender, EventArgs e)
@@ -112,7 +129,6 @@ namespace Stepper.WinForms
             dirY = true;
             btn_dirY.Text = "+";
         }
-
         private void btn_ZeroAngY_Click(object sender, EventArgs e)
         {
             nud_gradY.Value = 0;
@@ -130,7 +146,6 @@ namespace Stepper.WinForms
             dirY = false;
             btn_dirY.Text = "-";
         }
-
         private void btn_dir_Click(object sender, EventArgs e)
         {
             dirY = !dirY;
@@ -143,6 +158,10 @@ namespace Stepper.WinForms
 
         #region Обработка нажатий кнопок задания угла Z
         private void CtrlNewZ_Click(object sender, EventArgs e)
+        {
+            Angle angle = new Angle(nud_gradZ.Value, nud_minZ.Value, nud_secZ.Value);
+            l_newCodeZ.Text = angleConverter.AngleToCode(angle, dirZ).ToString();
+        }
         private void btn_maxAngZ_Click(object sender, EventArgs e)
         {
             nud_gradZ.Value = 8;
@@ -182,5 +201,64 @@ namespace Stepper.WinForms
         }
         #endregion
 
+        private void btn_openCofigFile_Click(object sender, EventArgs e)
+        {
+            fileManager.OpenCurrentCofigFile();
+        }
+
+        private void btn_chooseFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {   
+                    var filePath = openFileDialog1.FileName;
+                    fileManager.SetConfigFilePath(filePath);
+                    fileManager.OpenCurrentCofigFile();
+                    tb_fileName.Text = fileManager.GetFilePath();
+                }
+                catch (SecurityException ex)
+                {
+                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
+                    $"Details:\n\n{ex.StackTrace}");
+                }
+            }
+        }
+
+        private void setNumsFromConfigFile(int index)
+        {
+            Dictionary<string, double> currConfig = fileManager.ShowCurrentConfig();
+            if (index == 0) // Ось Y
+            {
+                num_acc.Value = (decimal)currConfig["accY"];
+                num_dec.Value = (decimal)currConfig["decY"];
+                num_koefReduct.Value = (decimal)currConfig["koefRedductionY"];
+                num_spd.Value = (decimal)currConfig["spdY"];
+                num_zeroCode.Value = (decimal)currConfig["ZeroCodeY"];
+                
+            }
+            else // Ось Z
+            {
+                num_acc.Value = (decimal)currConfig["accZ"];
+                num_dec.Value = (decimal)currConfig["decZ"];
+                num_koefReduct.Value = (decimal)currConfig["koefRedductionZ"];
+                num_spd.Value = (decimal)currConfig["spdZ"];
+                num_zeroCode.Value = (decimal)currConfig["ZeroCodeZ"];
+            }
+        }
+
+
+
+
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            fileManager.BinSerialize();
+        }
+
+        private void cb_axisSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setNumsFromConfigFile(cb_axisSelect.SelectedIndex);
+        }
     }
 }

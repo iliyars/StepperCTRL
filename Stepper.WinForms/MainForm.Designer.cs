@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Stepper.WinForms
 {
     partial class MainForm
@@ -29,19 +31,15 @@ namespace Stepper.WinForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btn_connect = new System.Windows.Forms.Button();
             this.cb_ports = new System.Windows.Forms.ComboBox();
             this.cb_boudRate = new System.Windows.Forms.ComboBox();
-            this.tb_code = new System.Windows.Forms.TextBox();
-            this.tb_playLoad = new System.Windows.Forms.TextBox();
-            this.tb_crc = new System.Windows.Forms.TextBox();
-            this.tb_test = new System.Windows.Forms.TextBox();
             this.cb_writeFile = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_disconnect = new System.Windows.Forms.Button();
@@ -93,6 +91,7 @@ namespace Stepper.WinForms
             this.label16 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.gb_newPosZ = new System.Windows.Forms.GroupBox();
+            this.l_newCodeZ = new System.Windows.Forms.Label();
             this.btn_minAngZ = new System.Windows.Forms.Button();
             this.btn_zeroAngZ = new System.Windows.Forms.Button();
             this.btn_maxAngZ = new System.Windows.Forms.Button();
@@ -108,11 +107,28 @@ namespace Stepper.WinForms
             this.nud_gradZ = new System.Windows.Forms.NumericUpDown();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.gb_config = new System.Windows.Forms.GroupBox();
+            this.tb_fileName = new System.Windows.Forms.TextBox();
+            this.cb_axisSelect = new System.Windows.Forms.ComboBox();
+            this.btn_chooseFile = new System.Windows.Forms.Button();
+            this.cb_microSteps = new System.Windows.Forms.ComboBox();
+            this.num_spd = new System.Windows.Forms.NumericUpDown();
+            this.num_koefReduct = new System.Windows.Forms.NumericUpDown();
+            this.num_zeroCode = new System.Windows.Forms.NumericUpDown();
+            this.num_dec = new System.Windows.Forms.NumericUpDown();
+            this.num_acc = new System.Windows.Forms.NumericUpDown();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.btn_openCofigFile = new System.Windows.Forms.Button();
             this.btn_startY = new System.Windows.Forms.Button();
             this.l_timeY = new System.Windows.Forms.Label();
             this.chart_Y = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart_Z = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.l_newCodeZ = new System.Windows.Forms.Label();
+            this.tb_text = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.gb_Yaxis.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -129,6 +145,11 @@ namespace Stepper.WinForms
             ((System.ComponentModel.ISupportInitialize)(this.nud_minZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_gradZ)).BeginInit();
             this.gb_config.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_spd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_koefReduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_zeroCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_dec)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_acc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Y)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Z)).BeginInit();
             this.SuspendLayout();
@@ -163,38 +184,6 @@ namespace Stepper.WinForms
             this.cb_boudRate.Name = "cb_boudRate";
             this.cb_boudRate.Size = new System.Drawing.Size(121, 24);
             this.cb_boudRate.TabIndex = 2;
-            // 
-            // tb_code
-            // 
-            this.tb_code.Location = new System.Drawing.Point(34, 113);
-            this.tb_code.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_code.Name = "tb_code";
-            this.tb_code.Size = new System.Drawing.Size(100, 22);
-            this.tb_code.TabIndex = 3;
-            // 
-            // tb_playLoad
-            // 
-            this.tb_playLoad.Location = new System.Drawing.Point(34, 141);
-            this.tb_playLoad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_playLoad.Name = "tb_playLoad";
-            this.tb_playLoad.Size = new System.Drawing.Size(100, 22);
-            this.tb_playLoad.TabIndex = 3;
-            // 
-            // tb_crc
-            // 
-            this.tb_crc.Location = new System.Drawing.Point(34, 170);
-            this.tb_crc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_crc.Name = "tb_crc";
-            this.tb_crc.Size = new System.Drawing.Size(100, 22);
-            this.tb_crc.TabIndex = 3;
-            // 
-            // tb_test
-            // 
-            this.tb_test.Location = new System.Drawing.Point(34, 198);
-            this.tb_test.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_test.Name = "tb_test";
-            this.tb_test.Size = new System.Drawing.Size(100, 22);
-            this.tb_test.TabIndex = 3;
             // 
             // cb_writeFile
             // 
@@ -545,6 +534,11 @@ namespace Stepper.WinForms
             // 
             this.nud_secY.Location = new System.Drawing.Point(395, 43);
             this.nud_secY.Margin = new System.Windows.Forms.Padding(4);
+            this.nud_secY.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
             this.nud_secY.Name = "nud_secY";
             this.nud_secY.Size = new System.Drawing.Size(160, 22);
             this.nud_secY.TabIndex = 0;
@@ -553,6 +547,11 @@ namespace Stepper.WinForms
             // 
             this.nud_minY.Location = new System.Drawing.Point(227, 43);
             this.nud_minY.Margin = new System.Windows.Forms.Padding(4);
+            this.nud_minY.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
             this.nud_minY.Name = "nud_minY";
             this.nud_minY.Size = new System.Drawing.Size(160, 22);
             this.nud_minY.TabIndex = 0;
@@ -561,6 +560,11 @@ namespace Stepper.WinForms
             // 
             this.nud_gradY.Location = new System.Drawing.Point(59, 43);
             this.nud_gradY.Margin = new System.Windows.Forms.Padding(4);
+            this.nud_gradY.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             this.nud_gradY.Name = "nud_gradY";
             this.nud_gradY.Size = new System.Drawing.Size(160, 22);
             this.nud_gradY.TabIndex = 0;
@@ -761,6 +765,14 @@ namespace Stepper.WinForms
             this.gb_newPosZ.TabStop = false;
             this.gb_newPosZ.Text = "Новое положение";
             // 
+            // l_newCodeZ
+            // 
+            this.l_newCodeZ.AutoSize = true;
+            this.l_newCodeZ.Location = new System.Drawing.Point(445, 81);
+            this.l_newCodeZ.Name = "l_newCodeZ";
+            this.l_newCodeZ.Size = new System.Drawing.Size(0, 17);
+            this.l_newCodeZ.TabIndex = 3;
+            // 
             // btn_minAngZ
             // 
             this.btn_minAngZ.Location = new System.Drawing.Point(237, 75);
@@ -869,6 +881,11 @@ namespace Stepper.WinForms
             // 
             this.nud_secZ.Location = new System.Drawing.Point(395, 43);
             this.nud_secZ.Margin = new System.Windows.Forms.Padding(4);
+            this.nud_secZ.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
             this.nud_secZ.Name = "nud_secZ";
             this.nud_secZ.Size = new System.Drawing.Size(160, 22);
             this.nud_secZ.TabIndex = 0;
@@ -877,6 +894,11 @@ namespace Stepper.WinForms
             // 
             this.nud_minZ.Location = new System.Drawing.Point(227, 45);
             this.nud_minZ.Margin = new System.Windows.Forms.Padding(4);
+            this.nud_minZ.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
             this.nud_minZ.Name = "nud_minZ";
             this.nud_minZ.Size = new System.Drawing.Size(160, 22);
             this.nud_minZ.TabIndex = 0;
@@ -885,22 +907,214 @@ namespace Stepper.WinForms
             // 
             this.nud_gradZ.Location = new System.Drawing.Point(59, 43);
             this.nud_gradZ.Margin = new System.Windows.Forms.Padding(4);
+            this.nud_gradZ.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             this.nud_gradZ.Name = "nud_gradZ";
             this.nud_gradZ.Size = new System.Drawing.Size(160, 22);
             this.nud_gradZ.TabIndex = 0;
             // 
             // gb_config
             // 
-            this.gb_config.Controls.Add(this.tb_code);
-            this.gb_config.Controls.Add(this.tb_playLoad);
-            this.gb_config.Controls.Add(this.tb_test);
-            this.gb_config.Controls.Add(this.tb_crc);
+            this.gb_config.Controls.Add(this.tb_fileName);
+            this.gb_config.Controls.Add(this.cb_axisSelect);
+            this.gb_config.Controls.Add(this.btn_chooseFile);
+            this.gb_config.Controls.Add(this.cb_microSteps);
+            this.gb_config.Controls.Add(this.num_spd);
+            this.gb_config.Controls.Add(this.num_koefReduct);
+            this.gb_config.Controls.Add(this.num_zeroCode);
+            this.gb_config.Controls.Add(this.num_dec);
+            this.gb_config.Controls.Add(this.num_acc);
+            this.gb_config.Controls.Add(this.label27);
+            this.gb_config.Controls.Add(this.label31);
+            this.gb_config.Controls.Add(this.label30);
+            this.gb_config.Controls.Add(this.label29);
+            this.gb_config.Controls.Add(this.label28);
+            this.gb_config.Controls.Add(this.label22);
+            this.gb_config.Controls.Add(this.btn_openCofigFile);
             this.gb_config.Location = new System.Drawing.Point(12, 131);
             this.gb_config.Name = "gb_config";
             this.gb_config.Size = new System.Drawing.Size(308, 469);
             this.gb_config.TabIndex = 8;
             this.gb_config.TabStop = false;
             this.gb_config.Text = "Параметры ускорния";
+            // 
+            // tb_fileName
+            // 
+            this.tb_fileName.Location = new System.Drawing.Point(47, 226);
+            this.tb_fileName.Name = "tb_fileName";
+            this.tb_fileName.ReadOnly = true;
+            this.tb_fileName.Size = new System.Drawing.Size(169, 22);
+            this.tb_fileName.TabIndex = 14;
+            // 
+            // cb_axisSelect
+            // 
+            this.cb_axisSelect.FormattingEnabled = true;
+            this.cb_axisSelect.Items.AddRange(new object[] {
+            "Y",
+            "Z"});
+            this.cb_axisSelect.Location = new System.Drawing.Point(250, 20);
+            this.cb_axisSelect.Name = "cb_axisSelect";
+            this.cb_axisSelect.Size = new System.Drawing.Size(52, 24);
+            this.cb_axisSelect.TabIndex = 13;
+            this.cb_axisSelect.SelectedIndexChanged += new System.EventHandler(this.cb_axisSelect_SelectedIndexChanged);
+            // 
+            // btn_chooseFile
+            // 
+            this.btn_chooseFile.Location = new System.Drawing.Point(0, 292);
+            this.btn_chooseFile.Name = "btn_chooseFile";
+            this.btn_chooseFile.Size = new System.Drawing.Size(216, 23);
+            this.btn_chooseFile.TabIndex = 12;
+            this.btn_chooseFile.Text = "Выбрать файл настроек";
+            this.btn_chooseFile.UseVisualStyleBackColor = true;
+            this.btn_chooseFile.Click += new System.EventHandler(this.btn_chooseFile_Click);
+            // 
+            // cb_microSteps
+            // 
+            this.cb_microSteps.FormattingEnabled = true;
+            this.cb_microSteps.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "4",
+            "8",
+            "16",
+            "32",
+            "64"});
+            this.cb_microSteps.Location = new System.Drawing.Point(168, 170);
+            this.cb_microSteps.Name = "cb_microSteps";
+            this.cb_microSteps.Size = new System.Drawing.Size(65, 24);
+            this.cb_microSteps.TabIndex = 7;
+            // 
+            // num_spd
+            // 
+            this.num_spd.Location = new System.Drawing.Point(168, 22);
+            this.num_spd.Margin = new System.Windows.Forms.Padding(4);
+            this.num_spd.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.num_spd.Name = "num_spd";
+            this.num_spd.Size = new System.Drawing.Size(65, 22);
+            this.num_spd.TabIndex = 6;
+            // 
+            // num_koefReduct
+            // 
+            this.num_koefReduct.Location = new System.Drawing.Point(168, 138);
+            this.num_koefReduct.Margin = new System.Windows.Forms.Padding(4);
+            this.num_koefReduct.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.num_koefReduct.Name = "num_koefReduct";
+            this.num_koefReduct.Size = new System.Drawing.Size(65, 22);
+            this.num_koefReduct.TabIndex = 6;
+            // 
+            // num_zeroCode
+            // 
+            this.num_zeroCode.Location = new System.Drawing.Point(168, 108);
+            this.num_zeroCode.Margin = new System.Windows.Forms.Padding(4);
+            this.num_zeroCode.Maximum = new decimal(new int[] {
+            66000,
+            0,
+            0,
+            0});
+            this.num_zeroCode.Name = "num_zeroCode";
+            this.num_zeroCode.Size = new System.Drawing.Size(65, 22);
+            this.num_zeroCode.TabIndex = 6;
+            // 
+            // num_dec
+            // 
+            this.num_dec.Location = new System.Drawing.Point(168, 78);
+            this.num_dec.Margin = new System.Windows.Forms.Padding(4);
+            this.num_dec.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.num_dec.Name = "num_dec";
+            this.num_dec.Size = new System.Drawing.Size(65, 22);
+            this.num_dec.TabIndex = 6;
+            // 
+            // num_acc
+            // 
+            this.num_acc.Location = new System.Drawing.Point(168, 49);
+            this.num_acc.Margin = new System.Windows.Forms.Padding(4);
+            this.num_acc.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.num_acc.Name = "num_acc";
+            this.num_acc.Size = new System.Drawing.Size(65, 22);
+            this.num_acc.TabIndex = 6;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 27);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(133, 17);
+            this.label27.TabIndex = 5;
+            this.label27.Text = "Ускорение шаг/c^2";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(8, 179);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(74, 17);
+            this.label31.TabIndex = 5;
+            this.label31.Text = "Микрошаг";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(8, 143);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(124, 17);
+            this.label30.TabIndex = 5;
+            this.label30.Text = "Коэфф. редукции";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(8, 113);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(68, 17);
+            this.label29.TabIndex = 5;
+            this.label29.Text = "Код нуля";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(8, 86);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(145, 17);
+            this.label28.TabIndex = 5;
+            this.label28.Text = "Торможение шаг/c^2";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(8, 54);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(108, 17);
+            this.label22.TabIndex = 5;
+            this.label22.Text = "Скорость шаг/c";
+            // 
+            // btn_openCofigFile
+            // 
+            this.btn_openCofigFile.Location = new System.Drawing.Point(0, 258);
+            this.btn_openCofigFile.Name = "btn_openCofigFile";
+            this.btn_openCofigFile.Size = new System.Drawing.Size(216, 23);
+            this.btn_openCofigFile.TabIndex = 4;
+            this.btn_openCofigFile.Text = "Открыть файл настроек";
+            this.btn_openCofigFile.UseVisualStyleBackColor = true;
+            this.btn_openCofigFile.Click += new System.EventHandler(this.btn_openCofigFile_Click);
             // 
             // btn_startY
             // 
@@ -923,49 +1137,54 @@ namespace Stepper.WinForms
             // 
             // chart_Y
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chart_Y.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chart_Y.Legends.Add(legend7);
+            chartArea3.Name = "ChartArea1";
+            this.chart_Y.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart_Y.Legends.Add(legend3);
             this.chart_Y.Location = new System.Drawing.Point(345, 468);
             this.chart_Y.Name = "chart_Y";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chart_Y.Series.Add(series7);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart_Y.Series.Add(series3);
             this.chart_Y.Size = new System.Drawing.Size(730, 500);
             this.chart_Y.TabIndex = 9;
             this.chart_Y.Text = "chart1";
             // 
             // chart_Z
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chart_Z.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chart_Z.Legends.Add(legend8);
+            chartArea4.Name = "ChartArea1";
+            this.chart_Z.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart_Z.Legends.Add(legend4);
             this.chart_Z.Location = new System.Drawing.Point(1103, 468);
             this.chart_Z.Name = "chart_Z";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chart_Z.Series.Add(series8);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chart_Z.Series.Add(series4);
             this.chart_Z.Size = new System.Drawing.Size(730, 500);
             this.chart_Z.TabIndex = 10;
             this.chart_Z.Text = "chart_Y";
             // 
-            // l_newCodeZ
+            // tb_text
             // 
-            this.l_newCodeZ.AutoSize = true;
-            this.l_newCodeZ.Location = new System.Drawing.Point(445, 81);
-            this.l_newCodeZ.Name = "l_newCodeZ";
-            this.l_newCodeZ.Size = new System.Drawing.Size(0, 17);
-            this.l_newCodeZ.TabIndex = 3;
+            this.tb_text.Location = new System.Drawing.Point(990, 93);
+            this.tb_text.Multiline = true;
+            this.tb_text.Name = "tb_text";
+            this.tb_text.Size = new System.Drawing.Size(194, 90);
+            this.tb_text.TabIndex = 11;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1883, 715);
+            this.Controls.Add(this.tb_text);
             this.Controls.Add(this.chart_Z);
             this.Controls.Add(this.chart_Y);
             this.Controls.Add(this.l_timeY);
@@ -977,6 +1196,7 @@ namespace Stepper.WinForms
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1002,6 +1222,11 @@ namespace Stepper.WinForms
             ((System.ComponentModel.ISupportInitialize)(this.nud_gradZ)).EndInit();
             this.gb_config.ResumeLayout(false);
             this.gb_config.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_spd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_koefReduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_zeroCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_dec)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_acc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Y)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Z)).EndInit();
             this.ResumeLayout(false);
@@ -1009,15 +1234,14 @@ namespace Stepper.WinForms
 
         }
 
+       
+
+
         #endregion
 
         private System.Windows.Forms.Button btn_connect;
         private System.Windows.Forms.ComboBox cb_ports;
         private System.Windows.Forms.ComboBox cb_boudRate;
-        private System.Windows.Forms.TextBox tb_code;
-        private System.Windows.Forms.TextBox tb_playLoad;
-        private System.Windows.Forms.TextBox tb_crc;
-        private System.Windows.Forms.TextBox tb_test;
         private System.Windows.Forms.CheckBox cb_writeFile;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn_disconnect;
@@ -1089,6 +1313,24 @@ namespace Stepper.WinForms
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_Z;
         private System.Windows.Forms.Label l_newCodeY;
         private System.Windows.Forms.Label l_newCodeZ;
+        private System.Windows.Forms.Button btn_openCofigFile;
+        private System.Windows.Forms.TextBox tb_text;
+        private System.Windows.Forms.ComboBox cb_microSteps;
+        private System.Windows.Forms.NumericUpDown num_spd;
+        private System.Windows.Forms.NumericUpDown num_koefReduct;
+        private System.Windows.Forms.NumericUpDown num_zeroCode;
+        private System.Windows.Forms.NumericUpDown num_dec;
+        private System.Windows.Forms.NumericUpDown num_acc;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btn_chooseFile;
+        private System.Windows.Forms.ComboBox cb_axisSelect;
+        private System.Windows.Forms.TextBox tb_fileName;
     }
 }
 
