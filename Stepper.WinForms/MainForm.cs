@@ -22,7 +22,7 @@ namespace Stepper.WinForms
         Dictionary<string, double> config;
 
         private bool dirY = true; // Направление вращения по Y
-        private bool dirZ = true; // Направление вращения по Я
+        private bool dirZ = true; // Направление вращения по Z
 
         int i = 0;
         public MainForm()
@@ -31,7 +31,6 @@ namespace Stepper.WinForms
             SetPorts();
             fileManager.ReadBinFile();
             var tmp = fileManager.ShowCurrentConfig();
-            
             tb_fileName.Text = fileManager.GetFilePath();
             fileManager.FileClosed += FileManager_FileClosed;
             serialController.DataReceived += SerialController_DataReceived;
@@ -49,7 +48,10 @@ namespace Stepper.WinForms
             {
                 ctrl.Click += CtrlNewZ_Click;
             }
-           
+            cb_axisSelect.SelectedIndex = 0;
+
+            fileManager.ReadCurrentConfigFile();
+            setNumsFromConfigFile(cb_axisSelect.SelectedIndex);
         }
 
         private void FileManager_FileClosed(object sender, EventArgs e)
@@ -61,6 +63,7 @@ namespace Stepper.WinForms
             {
                 tb_text.AppendText($"{pair.Key}-{pair.Value}\n\n");
             }
+            setNumsFromConfigFile(cb_axisSelect.SelectedIndex);
 
         }
 
@@ -90,7 +93,7 @@ namespace Stepper.WinForms
             i++;
             this.BeginInvoke((Action)(() =>
             {
-                //TODO: Отображение пришедших данных.
+                l_recevedCode.Text = serialController.PlayLoad.ToString();
             }));
             fileManager.WriteDataFile(cb_writeFile.Checked, serialController.OperationCode, serialController.PlayLoad, serialController.CRC);
         }
@@ -201,6 +204,7 @@ namespace Stepper.WinForms
         }
         #endregion
 
+
         private void btn_openCofigFile_Click(object sender, EventArgs e)
         {
             fileManager.OpenCurrentCofigFile();
@@ -224,32 +228,31 @@ namespace Stepper.WinForms
                 }
             }
         }
-
+        /// <summary>
+        /// Устанавливет numControl'ы из файла настроек.
+        /// </summary>
+        /// <param name="index">ось Y/ось Z</param>
         private void setNumsFromConfigFile(int index)
         {
             Dictionary<string, double> currConfig = fileManager.ShowCurrentConfig();
             if (index == 0) // Ось Y
             {
-                num_acc.Value = (decimal)currConfig["accY"];
+                num_spd.Value = (decimal)currConfig["spdY"];
                 num_dec.Value = (decimal)currConfig["decY"];
                 num_koefReduct.Value = (decimal)currConfig["koefRedductionY"];
-                num_spd.Value = (decimal)currConfig["spdY"];
+                num_acc.Value = (decimal)currConfig["accY"];
                 num_zeroCode.Value = (decimal)currConfig["ZeroCodeY"];
                 
             }
             else // Ось Z
             {
-                num_acc.Value = (decimal)currConfig["accZ"];
+                num_spd.Value = (decimal)currConfig["spdZ"];
                 num_dec.Value = (decimal)currConfig["decZ"];
                 num_koefReduct.Value = (decimal)currConfig["koefRedductionZ"];
-                num_spd.Value = (decimal)currConfig["spdZ"];
+                num_acc.Value = (decimal)currConfig["accZ"];
                 num_zeroCode.Value = (decimal)currConfig["ZeroCodeZ"];
             }
         }
-
-
-
-
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -259,6 +262,11 @@ namespace Stepper.WinForms
         private void cb_axisSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             setNumsFromConfigFile(cb_axisSelect.SelectedIndex);
+        }
+
+        private void btn_startY_Click(object sender, EventArgs e)
+        {
+            serialController.SendCommand(0x00, 48392, 800, 800, 1000, 161, 3000, 1);
         }
     }
 }

@@ -68,8 +68,12 @@ namespace Stepper.BL.Controller
                     {
                         byte[] dataReceived = new byte[dataLength];
                         _serialPort.Read(dataReceived, 0, dataLength); // Заполняем буфер байтами
-                        bool isDataGood = CheckReceivedCode(dataReceived);
-                        SetCode(dataReceived, isDataGood);
+                        if (dataReceived[0] == 0x01)
+                       {
+                            
+                            bool isDataGood = CheckReceivedCode(dataReceived);
+                            SetCode(dataReceived, isDataGood);
+                       }
                     }
                 }
                 catch (Exception ex)
@@ -116,6 +120,59 @@ namespace Stepper.BL.Controller
         public void DisconnectSerial()
         {
             _serialPort.Close();
+        }
+        /// <summary>
+        /// Формирует и отправляет пакет байт с коммандой
+        /// </summary>
+        /// <param name="opCode">код команды 1 байт</param>
+        /// <param name="acceleration">ускорение 2 байта</param>
+        /// <param name="decceleration">торможение 2 байта</param>
+        /// <param name="speed">скорость 2 байта </param>
+        /// <param name="redductionCoeff">коэффициент редукции 1 байт</param>
+        /// <param name="zeroCode">код нуля 2 байта</param>
+        /// <param name="microSteps">микро шаг 1 байт</param>
+        /// <param name="angleCode">код нового положения</param>
+        public void SendCommand(byte opCode, UInt16 angleCode, UInt16 acceleration, UInt16 decceleration, UInt16 speed, byte redductionCoeff, UInt16 zeroCode, byte microSteps )
+        {
+            List<byte> mesagge = new List<byte>();
+            mesagge.Add(opCode);
+            InsertIntToByteList(ref mesagge, angleCode);
+            InsertIntToByteList(ref mesagge, acceleration);
+            InsertIntToByteList(ref mesagge, decceleration);
+            InsertIntToByteList(ref mesagge, speed);
+            mesagge.Add(redductionCoeff);
+            InsertIntToByteList(ref mesagge, zeroCode);
+            mesagge.Add(microSteps);
+
+            byte[] msg = mesagge.ToArray();
+
+            _serialPort.Write(msg, 0, msg.Length);
+        }
+        /// <summary>
+        /// Посылает только код команды и код угла. Используется если параметры разгона не были изменены.
+        /// </summary>
+        /// <param name="opCode">код команды.</param>
+        /// <param name="angleCode">код угла.</param>
+        public void SendCommand(byte opCode, UInt16 angleCode)
+        {
+            List<byte> mesagge = new List<byte>();
+            mesagge.Add(opCode);
+            InsertIntToByteList(ref mesagge, angleCode);
+            byte[] msg = mesagge.ToArray();
+
+            _serialPort.Write(msg, 0, msg.Length);
+        }
+
+
+
+
+        private void InsertIntToByteList(ref List<byte> msg, UInt16 num)
+        {
+            byte highByte = (byte)(num >> 8);
+            byte lowByte = (byte)(num);
+            msg.Add(highByte);
+            msg.Add(lowByte);
+            
         }
     }
 }

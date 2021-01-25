@@ -31,12 +31,12 @@ namespace Stepper.WinForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btn_connect = new System.Windows.Forms.Button();
             this.cb_ports = new System.Windows.Forms.ComboBox();
             this.cb_boudRate = new System.Windows.Forms.ComboBox();
@@ -111,11 +111,11 @@ namespace Stepper.WinForms
             this.cb_axisSelect = new System.Windows.Forms.ComboBox();
             this.btn_chooseFile = new System.Windows.Forms.Button();
             this.cb_microSteps = new System.Windows.Forms.ComboBox();
-            this.num_spd = new System.Windows.Forms.NumericUpDown();
+            this.num_acc = new System.Windows.Forms.NumericUpDown();
             this.num_koefReduct = new System.Windows.Forms.NumericUpDown();
             this.num_zeroCode = new System.Windows.Forms.NumericUpDown();
             this.num_dec = new System.Windows.Forms.NumericUpDown();
-            this.num_acc = new System.Windows.Forms.NumericUpDown();
+            this.num_spd = new System.Windows.Forms.NumericUpDown();
             this.label27 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -129,6 +129,7 @@ namespace Stepper.WinForms
             this.chart_Z = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tb_text = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.l_recevedCode = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gb_Yaxis.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -145,11 +146,11 @@ namespace Stepper.WinForms
             ((System.ComponentModel.ISupportInitialize)(this.nud_minZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_gradZ)).BeginInit();
             this.gb_config.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_spd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_acc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_koefReduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_zeroCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_dec)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_acc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_spd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Y)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Z)).BeginInit();
             this.SuspendLayout();
@@ -311,6 +312,7 @@ namespace Stepper.WinForms
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.l_recevedCode);
             this.groupBox3.Controls.Add(this.tb_currSecY);
             this.groupBox3.Controls.Add(this.tb_currMinY);
             this.groupBox3.Controls.Add(this.tb_currGradY);
@@ -922,11 +924,11 @@ namespace Stepper.WinForms
             this.gb_config.Controls.Add(this.cb_axisSelect);
             this.gb_config.Controls.Add(this.btn_chooseFile);
             this.gb_config.Controls.Add(this.cb_microSteps);
-            this.gb_config.Controls.Add(this.num_spd);
+            this.gb_config.Controls.Add(this.num_acc);
             this.gb_config.Controls.Add(this.num_koefReduct);
             this.gb_config.Controls.Add(this.num_zeroCode);
             this.gb_config.Controls.Add(this.num_dec);
-            this.gb_config.Controls.Add(this.num_acc);
+            this.gb_config.Controls.Add(this.num_spd);
             this.gb_config.Controls.Add(this.label27);
             this.gb_config.Controls.Add(this.label31);
             this.gb_config.Controls.Add(this.label30);
@@ -987,18 +989,18 @@ namespace Stepper.WinForms
             this.cb_microSteps.Size = new System.Drawing.Size(65, 24);
             this.cb_microSteps.TabIndex = 7;
             // 
-            // num_spd
+            // num_acc
             // 
-            this.num_spd.Location = new System.Drawing.Point(168, 22);
-            this.num_spd.Margin = new System.Windows.Forms.Padding(4);
-            this.num_spd.Maximum = new decimal(new int[] {
+            this.num_acc.Location = new System.Drawing.Point(168, 22);
+            this.num_acc.Margin = new System.Windows.Forms.Padding(4);
+            this.num_acc.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.num_spd.Name = "num_spd";
-            this.num_spd.Size = new System.Drawing.Size(65, 22);
-            this.num_spd.TabIndex = 6;
+            this.num_acc.Name = "num_acc";
+            this.num_acc.Size = new System.Drawing.Size(65, 22);
+            this.num_acc.TabIndex = 6;
             // 
             // num_koefReduct
             // 
@@ -1039,18 +1041,18 @@ namespace Stepper.WinForms
             this.num_dec.Size = new System.Drawing.Size(65, 22);
             this.num_dec.TabIndex = 6;
             // 
-            // num_acc
+            // num_spd
             // 
-            this.num_acc.Location = new System.Drawing.Point(168, 49);
-            this.num_acc.Margin = new System.Windows.Forms.Padding(4);
-            this.num_acc.Maximum = new decimal(new int[] {
+            this.num_spd.Location = new System.Drawing.Point(168, 49);
+            this.num_spd.Margin = new System.Windows.Forms.Padding(4);
+            this.num_spd.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.num_acc.Name = "num_acc";
-            this.num_acc.Size = new System.Drawing.Size(65, 22);
-            this.num_acc.TabIndex = 6;
+            this.num_spd.Name = "num_spd";
+            this.num_spd.Size = new System.Drawing.Size(65, 22);
+            this.num_spd.TabIndex = 6;
             // 
             // label27
             // 
@@ -1125,6 +1127,7 @@ namespace Stepper.WinForms
             this.btn_startY.TabIndex = 5;
             this.btn_startY.Text = "Старт";
             this.btn_startY.UseVisualStyleBackColor = true;
+            this.btn_startY.Click += new System.EventHandler(this.btn_startY_Click);
             // 
             // l_timeY
             // 
@@ -1137,32 +1140,32 @@ namespace Stepper.WinForms
             // 
             // chart_Y
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart_Y.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart_Y.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart_Y.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart_Y.Legends.Add(legend1);
             this.chart_Y.Location = new System.Drawing.Point(345, 468);
             this.chart_Y.Name = "chart_Y";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart_Y.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_Y.Series.Add(series1);
             this.chart_Y.Size = new System.Drawing.Size(730, 500);
             this.chart_Y.TabIndex = 9;
             this.chart_Y.Text = "chart1";
             // 
             // chart_Z
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart_Z.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart_Z.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chart_Z.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart_Z.Legends.Add(legend2);
             this.chart_Z.Location = new System.Drawing.Point(1103, 468);
             this.chart_Z.Name = "chart_Z";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart_Z.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart_Z.Series.Add(series2);
             this.chart_Z.Size = new System.Drawing.Size(730, 500);
             this.chart_Z.TabIndex = 10;
             this.chart_Z.Text = "chart_Y";
@@ -1178,6 +1181,15 @@ namespace Stepper.WinForms
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // l_recevedCode
+            // 
+            this.l_recevedCode.AutoSize = true;
+            this.l_recevedCode.Location = new System.Drawing.Point(463, 78);
+            this.l_recevedCode.Name = "l_recevedCode";
+            this.l_recevedCode.Size = new System.Drawing.Size(54, 17);
+            this.l_recevedCode.TabIndex = 4;
+            this.l_recevedCode.Text = "label23";
             // 
             // MainForm
             // 
@@ -1222,11 +1234,11 @@ namespace Stepper.WinForms
             ((System.ComponentModel.ISupportInitialize)(this.nud_gradZ)).EndInit();
             this.gb_config.ResumeLayout(false);
             this.gb_config.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_spd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_acc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_koefReduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_zeroCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_dec)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_acc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_spd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Y)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Z)).EndInit();
             this.ResumeLayout(false);
@@ -1316,11 +1328,11 @@ namespace Stepper.WinForms
         private System.Windows.Forms.Button btn_openCofigFile;
         private System.Windows.Forms.TextBox tb_text;
         private System.Windows.Forms.ComboBox cb_microSteps;
-        private System.Windows.Forms.NumericUpDown num_spd;
+        private System.Windows.Forms.NumericUpDown num_acc;
         private System.Windows.Forms.NumericUpDown num_koefReduct;
         private System.Windows.Forms.NumericUpDown num_zeroCode;
         private System.Windows.Forms.NumericUpDown num_dec;
-        private System.Windows.Forms.NumericUpDown num_acc;
+        private System.Windows.Forms.NumericUpDown num_spd;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
@@ -1331,6 +1343,7 @@ namespace Stepper.WinForms
         private System.Windows.Forms.Button btn_chooseFile;
         private System.Windows.Forms.ComboBox cb_axisSelect;
         private System.Windows.Forms.TextBox tb_fileName;
+        private System.Windows.Forms.Label l_recevedCode;
     }
 }
 
