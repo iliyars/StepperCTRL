@@ -16,9 +16,7 @@ namespace Stepper.BL.Model
         {
             ConfigFilePath = configFilePath ?? throw new ArgumentNullException(nameof(configFilePath));
             Config = new Dictionary<string, double>();
-
-        
-
+           
         }
     }
 }

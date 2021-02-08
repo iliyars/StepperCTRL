@@ -31,12 +31,12 @@ namespace Stepper.WinForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btn_connect = new System.Windows.Forms.Button();
             this.cb_ports = new System.Windows.Forms.ComboBox();
             this.cb_boudRate = new System.Windows.Forms.ComboBox();
@@ -52,6 +52,7 @@ namespace Stepper.WinForms
             this.label13 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.l_recevedCode = new System.Windows.Forms.Label();
             this.tb_currSecY = new System.Windows.Forms.TextBox();
             this.tb_currMinY = new System.Windows.Forms.TextBox();
             this.tb_currGradY = new System.Windows.Forms.TextBox();
@@ -129,7 +130,6 @@ namespace Stepper.WinForms
             this.chart_Z = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tb_text = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.l_recevedCode = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gb_Yaxis.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -179,7 +179,8 @@ namespace Stepper.WinForms
             this.cb_boudRate.FormattingEnabled = true;
             this.cb_boudRate.Items.AddRange(new object[] {
             "9600",
-            "1000000"});
+            "1000000",
+            "2000000"});
             this.cb_boudRate.Location = new System.Drawing.Point(143, 53);
             this.cb_boudRate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_boudRate.Name = "cb_boudRate";
@@ -329,6 +330,15 @@ namespace Stepper.WinForms
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Текущее положение";
+            // 
+            // l_recevedCode
+            // 
+            this.l_recevedCode.AutoSize = true;
+            this.l_recevedCode.Location = new System.Drawing.Point(463, 78);
+            this.l_recevedCode.Name = "l_recevedCode";
+            this.l_recevedCode.Size = new System.Drawing.Size(54, 17);
+            this.l_recevedCode.TabIndex = 4;
+            this.l_recevedCode.Text = "label23";
             // 
             // tb_currSecY
             // 
@@ -1140,32 +1150,32 @@ namespace Stepper.WinForms
             // 
             // chart_Y
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart_Y.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart_Y.Legends.Add(legend1);
+            chartArea7.Name = "ChartArea1";
+            this.chart_Y.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.chart_Y.Legends.Add(legend7);
             this.chart_Y.Location = new System.Drawing.Point(345, 468);
             this.chart_Y.Name = "chart_Y";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart_Y.Series.Add(series1);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.chart_Y.Series.Add(series7);
             this.chart_Y.Size = new System.Drawing.Size(730, 500);
             this.chart_Y.TabIndex = 9;
             this.chart_Y.Text = "chart1";
             // 
             // chart_Z
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart_Z.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart_Z.Legends.Add(legend2);
+            chartArea8.Name = "ChartArea1";
+            this.chart_Z.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chart_Z.Legends.Add(legend8);
             this.chart_Z.Location = new System.Drawing.Point(1103, 468);
             this.chart_Z.Name = "chart_Z";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart_Z.Series.Add(series2);
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chart_Z.Series.Add(series8);
             this.chart_Z.Size = new System.Drawing.Size(730, 500);
             this.chart_Z.TabIndex = 10;
             this.chart_Z.Text = "chart_Y";
@@ -1181,15 +1191,6 @@ namespace Stepper.WinForms
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // l_recevedCode
-            // 
-            this.l_recevedCode.AutoSize = true;
-            this.l_recevedCode.Location = new System.Drawing.Point(463, 78);
-            this.l_recevedCode.Name = "l_recevedCode";
-            this.l_recevedCode.Size = new System.Drawing.Size(54, 17);
-            this.l_recevedCode.TabIndex = 4;
-            this.l_recevedCode.Text = "label23";
             // 
             // MainForm
             // 
@@ -1327,7 +1328,6 @@ namespace Stepper.WinForms
         private System.Windows.Forms.Label l_newCodeZ;
         private System.Windows.Forms.Button btn_openCofigFile;
         private System.Windows.Forms.TextBox tb_text;
-        private System.Windows.Forms.ComboBox cb_microSteps;
         private System.Windows.Forms.NumericUpDown num_acc;
         private System.Windows.Forms.NumericUpDown num_koefReduct;
         private System.Windows.Forms.NumericUpDown num_zeroCode;
@@ -1344,6 +1344,7 @@ namespace Stepper.WinForms
         private System.Windows.Forms.ComboBox cb_axisSelect;
         private System.Windows.Forms.TextBox tb_fileName;
         private System.Windows.Forms.Label l_recevedCode;
+        public System.Windows.Forms.ComboBox cb_microSteps;
     }
 }
 

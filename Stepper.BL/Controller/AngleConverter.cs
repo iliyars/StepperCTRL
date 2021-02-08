@@ -52,7 +52,32 @@ namespace Stepper.BL.Controller
             return angle;
         }
 
-            
+        public int CodeToSteps(int newCode, int microStep, int currentPosCode, int koefRedduction)
+        {
 
+            int codeToMove = 0;
+            if (currentPosCode < 31000) // находимся в положительной позиции 
+            {
+                if (newCode < 31000) // задан положительный угол
+                {
+                    codeToMove = Math.Abs(newCode - currentPosCode);
+                }
+                else // задан отрицательный угол
+                {
+                    codeToMove = currentPosCode + newCode;
+                    codeToMove = UInt16.MaxValue - codeToMove;
+                }
+            }
+            else // находимся в отрицательном положении
+            {
+                if (newCode > 31000)    // задан отрицательный угол
+                    codeToMove = Math.Abs(newCode - currentPosCode);
+                else // задан положительный угол
+                    codeToMove = (UInt16.MaxValue - currentPosCode) + newCode;
+            }
+            double sec = Math.Ceiling(codeToMove / CONVERT_CONST);
+            int steps = (int)Math.Ceiling(sec / (6480 / koefRedduction / microStep)); 
+            return steps;
+        }
     }
 }

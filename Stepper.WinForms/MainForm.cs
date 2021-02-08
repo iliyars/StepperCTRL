@@ -24,6 +24,9 @@ namespace Stepper.WinForms
         private bool dirY = true; // Направление вращения по Y
         private bool dirZ = true; // Направление вращения по Z
 
+        private int newAng = 0;
+
+
         int i = 0;
         public MainForm()
         {
@@ -39,7 +42,9 @@ namespace Stepper.WinForms
             btn_disconnect.Click += Btn_disconnect_Click;
             gb_newPositionY.Click += Gb_newPositionY_Click;
             gb_newPosZ.Click += Gb_newPosZ_Click;
-            
+            cb_microSteps.SelectedIndex = 0;
+            fileManager.ReadCurrentConfigFile();
+
             foreach (Control ctrl in gb_newPositionY.Controls)
             {
                 ctrl.Click += Ctrl_Click;
@@ -50,8 +55,8 @@ namespace Stepper.WinForms
             }
             cb_axisSelect.SelectedIndex = 0;
 
-            fileManager.ReadCurrentConfigFile();
-            setNumsFromConfigFile(cb_axisSelect.SelectedIndex);
+           
+           // setNumsFromConfigFile(cb_axisSelect.SelectedIndex);
         }
 
         private void FileManager_FileClosed(object sender, EventArgs e)
@@ -117,12 +122,19 @@ namespace Stepper.WinForms
         {
             Angle angle = new Angle(nud_gradY.Value, nud_minY.Value, nud_secY.Value);
             l_newCodeY.Text = angleConverter.AngleToCode(angle, dirY).ToString();
+            newAng = angleConverter.AngleToCode(angle, dirY);
+            cb_axisSelect.SelectedIndex = 0;
+            l_stepsY.Text =  angleConverter.CodeToSteps(newAng, int.Parse(cb_microSteps.Text), 0, (int)num_koefReduct.Value).ToString();
 
         }
         private void Ctrl_Click(object sender, EventArgs e)
         {
             Angle angle = new Angle(nud_gradY.Value, nud_minY.Value, nud_secY.Value);
             l_newCodeY.Text = angleConverter.AngleToCode(angle, dirY).ToString();
+            newAng = angleConverter.AngleToCode(angle, dirY);
+            cb_axisSelect.SelectedIndex = 0;
+            l_stepsY.Text =  angleConverter.CodeToSteps(newAng, int.Parse(cb_microSteps.Text), 0, (int)num_koefReduct.Value).ToString();
+
         }
         private void btn_MaxAngY_Click(object sender, EventArgs e)
         {
@@ -164,6 +176,9 @@ namespace Stepper.WinForms
         {
             Angle angle = new Angle(nud_gradZ.Value, nud_minZ.Value, nud_secZ.Value);
             l_newCodeZ.Text = angleConverter.AngleToCode(angle, dirZ).ToString();
+            newAng = angleConverter.AngleToCode(angle, dirZ);
+            cb_axisSelect.SelectedIndex = 1;
+            l_stepsZ.Text = angleConverter.CodeToSteps(newAng, int.Parse(cb_microSteps.Text), 0, (int)num_koefReduct.Value).ToString();
         }
         private void btn_maxAngZ_Click(object sender, EventArgs e)
         {
@@ -201,6 +216,9 @@ namespace Stepper.WinForms
         {
             Angle angle = new Angle(nud_gradZ.Value, nud_minZ.Value, nud_secZ.Value);
             l_newCodeZ.Text = angleConverter.AngleToCode(angle, dirZ).ToString();
+            newAng = angleConverter.AngleToCode(angle, dirZ);
+            cb_axisSelect.SelectedIndex = 1;
+            l_stepsZ.Text =  angleConverter.CodeToSteps(newAng, int.Parse(cb_microSteps.Text), 0, (int)num_koefReduct.Value).ToString();
         }
         #endregion
 
@@ -266,7 +284,31 @@ namespace Stepper.WinForms
 
         private void btn_startY_Click(object sender, EventArgs e)
         {
-            serialController.SendCommand(0x00, 48392, 800, 800, 1000, 161, 3000, 1);
+            byte opCode;
+
+            switch (cb_axisSelect.SelectedIndex)
+            {
+                case 0:
+                    opCode = 0;
+                    break;
+                case 1:
+                    opCode = 1;
+                    break;
+
+
+            }
+
+
+
+            serialController.SendCommand(
+                0x00,
+                (ushort)newAng,
+                (ushort)num_acc.Value,
+                (ushort)num_dec.Value,
+                (ushort)num_spd.Value,
+                (byte)num_koefReduct.Value,
+                0,
+                Byte.Parse(cb_microSteps.Text));
         }
     }
 }
