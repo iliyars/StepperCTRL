@@ -31,12 +31,12 @@ namespace Stepper.WinForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btn_connect = new System.Windows.Forms.Button();
             this.cb_ports = new System.Windows.Forms.ComboBox();
             this.cb_boudRate = new System.Windows.Forms.ComboBox();
@@ -180,7 +180,8 @@ namespace Stepper.WinForms
             this.cb_boudRate.Items.AddRange(new object[] {
             "9600",
             "1000000",
-            "2000000"});
+            "2000000",
+            "115200"});
             this.cb_boudRate.Location = new System.Drawing.Point(143, 53);
             this.cb_boudRate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_boudRate.Name = "cb_boudRate";
@@ -1150,32 +1151,32 @@ namespace Stepper.WinForms
             // 
             // chart_Y
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chart_Y.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chart_Y.Legends.Add(legend7);
+            chartArea1.Name = "ChartArea1";
+            this.chart_Y.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart_Y.Legends.Add(legend1);
             this.chart_Y.Location = new System.Drawing.Point(345, 468);
             this.chart_Y.Name = "chart_Y";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chart_Y.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_Y.Series.Add(series1);
             this.chart_Y.Size = new System.Drawing.Size(730, 500);
             this.chart_Y.TabIndex = 9;
             this.chart_Y.Text = "chart1";
             // 
             // chart_Z
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chart_Z.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chart_Z.Legends.Add(legend8);
+            chartArea2.Name = "ChartArea1";
+            this.chart_Z.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart_Z.Legends.Add(legend2);
             this.chart_Z.Location = new System.Drawing.Point(1103, 468);
             this.chart_Z.Name = "chart_Z";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chart_Z.Series.Add(series8);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart_Z.Series.Add(series2);
             this.chart_Z.Size = new System.Drawing.Size(730, 500);
             this.chart_Z.TabIndex = 10;
             this.chart_Z.Text = "chart_Y";

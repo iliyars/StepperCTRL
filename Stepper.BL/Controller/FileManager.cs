@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Stepper.BL.Controller
 {
     /// <summary>
@@ -19,7 +20,7 @@ namespace Stepper.BL.Controller
         public event EventHandler FileClosed;
 
         private string _dataFilePath;
-
+        private DateTime time;
         private ConfigData configData;
       //  public string ConfigFilePath { get; set; } = "C:\\Users\\iliya\\OneDrive\\Desktop\\конфиг.txt";
 
@@ -40,6 +41,7 @@ namespace Stepper.BL.Controller
                 {
                     StreamWriter streamWriter = File.CreateText(path);
                     _dataFilePath = path;
+                    time = DateTime.Now;
                 }
                 catch (Exception ex)
                 {
@@ -65,7 +67,7 @@ namespace Stepper.BL.Controller
         /// <param name="opperationCode">код команды.</param>
         /// <param name="playLoad">код данных.</param>
         /// <param name="crc">контрольная сумма.</param>
-        public void WriteDataFile(bool writeState, byte opperationCode, UInt16 playLoad, byte crc)
+        public void WriteDataFile(bool writeState, UInt16 angleCode)
         {
             if (writeState && IsFileExist(_dataFilePath))
             {
@@ -73,8 +75,9 @@ namespace Stepper.BL.Controller
                 {
                     using (StreamWriter sw = new StreamWriter(_dataFilePath, true, System.Text.Encoding.Default))
                     {
-                        string time = DateTime.Now.ToString("mm:ss:fff");
-                        sw.WriteLine($"{time} {opperationCode} {playLoad} {crc} ");
+                        time = time.AddMilliseconds(10.0);
+                        string timestr = time.ToString("mm:ss:ffff");
+                        sw.WriteLine($"{timestr} {angleCode}");
                     }
                 }
                 catch (Exception ex)

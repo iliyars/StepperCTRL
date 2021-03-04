@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows.Forms;
 using Stepper.BL.Controller;
 using Stepper.BL.Model;
+using static Stepper.BL.Controller.SlipBase;
 
 namespace Stepper.WinForms
 {
@@ -96,11 +97,14 @@ namespace Stepper.WinForms
         private void SerialController_DataReceived(object sender, EventArgs e)
         {
             i++;
+            
             this.BeginInvoke((Action)(() =>
             {
-                l_recevedCode.Text = serialController.PlayLoad.ToString();
+
+                l_recevedCode.Text = serialController.AngleCode[DeviceAddress.Yaxis].ToString();
+               // tb_text.Text = $"{serialController.OperationCode}  {serialController.PlayLoad}  {serialController.CRC}";
             }));
-            fileManager.WriteDataFile(cb_writeFile.Checked, serialController.OperationCode, serialController.PlayLoad, serialController.CRC);
+            fileManager.WriteDataFile(cb_writeFile.Checked, serialController.AngleCode[DeviceAddress.Yaxis]);
         }
         /// <summary>
         /// Получение доступных com-портов в UI
@@ -298,8 +302,8 @@ namespace Stepper.WinForms
 
             }
 
-
-
+            /*
+            
             serialController.SendCommand(
                 0x00,
                 (ushort)newAng,
@@ -309,6 +313,8 @@ namespace Stepper.WinForms
                 (byte)num_koefReduct.Value,
                 0,
                 Byte.Parse(cb_microSteps.Text));
+            */
+            serialController.SendSlipCommand(new byte[] {100,2,0,0}, serialController._serialPort);
         }
     }
 }

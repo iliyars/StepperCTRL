@@ -47,8 +47,11 @@
     <Compile Include="Controller\AngleConverter.cs" />
     <Compile Include="Controller\FileManager.cs" />
     <Compile Include="Controller\SerialController.cs" />
+    <Compile Include="Controller\SlipBase.cs" />
+    <Compile Include="Controller\SSP.cs" />
     <Compile Include="Model\Angle.cs" />
     <Compile Include="Model\ConfigData.cs" />
+    <Compile Include="Model\LaseGyro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
