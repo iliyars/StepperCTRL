@@ -53,7 +53,7 @@ namespace Stepper.BL.Controller
                 }
             }
             slipMessage.Add((byte)((crc << 8) >> 8)); // Младший байт контрольной суммы CRC0
-            slipMessage.Add((byte)((crc << 8) >> 8)); // Старший байь=т контрольной суммы CRC1
+            slipMessage.Add((byte)(crc >> 8)); // Старший байь=т контрольной суммы CRC1
             slipMessage.Add(END);
             return slipMessage.ToArray();
         }

@@ -39,7 +39,12 @@ namespace Stepper.BL.Controller
             [DeviceAddress.Yaxis] = 0,
             [DeviceAddress.Zaxis] = 0
         };
-        public Dictionary<DeviceAddress, UInt16> AngleCode = new Dictionary<DeviceAddress, UInt16>();
+        public Dictionary<DeviceAddress, UInt16> AngleCode = new Dictionary<DeviceAddress, UInt16>
+        {
+            {DeviceAddress.Xaxis, 0 },
+            {DeviceAddress.Yaxis, 0 },
+            {DeviceAddress.Zaxis, 0 }
+        };
 
         public SerialPort _serialPort { get; set; }
         public event EventHandler DataReceived;

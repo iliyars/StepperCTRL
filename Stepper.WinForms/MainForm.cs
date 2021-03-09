@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Windows.Forms;
-using Stepper.BL.Controller;
+﻿using Stepper.BL.Controller;
 using Stepper.BL.Model;
+using System;
+using System.Collections.Generic;
+using System.Security;
+using System.Windows.Forms;
 using static Stepper.BL.Controller.SlipBase;
 
 namespace Stepper.WinForms
@@ -20,17 +13,16 @@ namespace Stepper.WinForms
         readonly SerialController serialController = new SerialController();
         readonly FileManager fileManager = new FileManager();
         readonly AngleConverter angleConverter = new AngleConverter();
+        readonly SSP ssp = new SSP();
         Dictionary<string, double> config;
-
         private bool dirY = true; // Направление вращения по Y
         private bool dirZ = true; // Направление вращения по Z
-
         private int newAng = 0;
+        ChartController chartController = new ChartController(6, 100);
 
-
-        int i = 0;
         public MainForm()
         {
+             
             InitializeComponent();
             SetPorts();
             fileManager.ReadBinFile();
@@ -45,6 +37,9 @@ namespace Stepper.WinForms
             gb_newPosZ.Click += Gb_newPosZ_Click;
             cb_microSteps.SelectedIndex = 0;
             fileManager.ReadCurrentConfigFile();
+            chartX.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+            chartY.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+            chartZ.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
 
             foreach (Control ctrl in gb_newPositionY.Controls)
             {
@@ -76,6 +71,8 @@ namespace Stepper.WinForms
         private void Btn_connect_Click(object sender, EventArgs e)
         {
             serialController.ConnectionSerial(cb_ports.Text, int.Parse(cb_boudRate.Text));
+            
+          // ssp.ConnectSSP("COM6");
         }
         private void Btn_disconnect_Click(object sender, EventArgs e)
         {
@@ -88,7 +85,6 @@ namespace Stepper.WinForms
            
         }
 
-      
         /// <summary>
         /// Отображение полученного кода в UI.
         /// </summary>
@@ -96,12 +92,19 @@ namespace Stepper.WinForms
         /// <param name="e"></param>
         private void SerialController_DataReceived(object sender, EventArgs e)
         {
-            i++;
-            
+            chartController.UpdateChartsData(serialController.AngleCode[DeviceAddress.Xaxis],
+                                             serialController.AngleCode[DeviceAddress.Yaxis],
+                                             serialController.AngleCode[DeviceAddress.Zaxis]);
+            chartController.UpdateTime();
+
             this.BeginInvoke((Action)(() =>
             {
-
-                l_recevedCode.Text = serialController.AngleCode[DeviceAddress.Yaxis].ToString();
+                l_recevedCodeX.Text = serialController.AngleCode[DeviceAddress.Xaxis].ToString();
+                l_recevedCodeY.Text = serialController.AngleCode[DeviceAddress.Yaxis].ToString();
+                l_recevedCodeZ.Text = serialController.AngleCode[DeviceAddress.Zaxis].ToString();
+                chartController.ShowCharts(chartX, chartY, chartZ);
+                chartController.ShowTime(l_timeYstart, l_timeYEnd);
+                //chart2.Series["Series1"].Points.AddY((double)serialController.AngleCode[DeviceAddress.Yaxis]);
                // tb_text.Text = $"{serialController.OperationCode}  {serialController.PlayLoad}  {serialController.CRC}";
             }));
             fileManager.WriteDataFile(cb_writeFile.Checked, serialController.AngleCode[DeviceAddress.Yaxis]);
@@ -127,7 +130,7 @@ namespace Stepper.WinForms
             Angle angle = new Angle(nud_gradY.Value, nud_minY.Value, nud_secY.Value);
             l_newCodeY.Text = angleConverter.AngleToCode(angle, dirY).ToString();
             newAng = angleConverter.AngleToCode(angle, dirY);
-            cb_axisSelect.SelectedIndex = 0;
+            cb_axisSelect.SelectedIndex = 1;
             l_stepsY.Text =  angleConverter.CodeToSteps(newAng, int.Parse(cb_microSteps.Text), 0, (int)num_koefReduct.Value).ToString();
 
         }
@@ -136,7 +139,7 @@ namespace Stepper.WinForms
             Angle angle = new Angle(nud_gradY.Value, nud_minY.Value, nud_secY.Value);
             l_newCodeY.Text = angleConverter.AngleToCode(angle, dirY).ToString();
             newAng = angleConverter.AngleToCode(angle, dirY);
-            cb_axisSelect.SelectedIndex = 0;
+            cb_axisSelect.SelectedIndex = 1;
             l_stepsY.Text =  angleConverter.CodeToSteps(newAng, int.Parse(cb_microSteps.Text), 0, (int)num_koefReduct.Value).ToString();
 
         }
@@ -181,7 +184,7 @@ namespace Stepper.WinForms
             Angle angle = new Angle(nud_gradZ.Value, nud_minZ.Value, nud_secZ.Value);
             l_newCodeZ.Text = angleConverter.AngleToCode(angle, dirZ).ToString();
             newAng = angleConverter.AngleToCode(angle, dirZ);
-            cb_axisSelect.SelectedIndex = 1;
+            cb_axisSelect.SelectedIndex = 2;
             l_stepsZ.Text = angleConverter.CodeToSteps(newAng, int.Parse(cb_microSteps.Text), 0, (int)num_koefReduct.Value).ToString();
         }
         private void btn_maxAngZ_Click(object sender, EventArgs e)
@@ -221,11 +224,10 @@ namespace Stepper.WinForms
             Angle angle = new Angle(nud_gradZ.Value, nud_minZ.Value, nud_secZ.Value);
             l_newCodeZ.Text = angleConverter.AngleToCode(angle, dirZ).ToString();
             newAng = angleConverter.AngleToCode(angle, dirZ);
-            cb_axisSelect.SelectedIndex = 1;
+            cb_axisSelect.SelectedIndex = 2;
             l_stepsZ.Text =  angleConverter.CodeToSteps(newAng, int.Parse(cb_microSteps.Text), 0, (int)num_koefReduct.Value).ToString();
         }
         #endregion
-
 
         private void btn_openCofigFile_Click(object sender, EventArgs e)
         {
@@ -257,23 +259,33 @@ namespace Stepper.WinForms
         private void setNumsFromConfigFile(int index)
         {
             Dictionary<string, double> currConfig = fileManager.ShowCurrentConfig();
-            if (index == 0) // Ось Y
+            switch (index)
             {
-                num_spd.Value = (decimal)currConfig["spdY"];
-                num_dec.Value = (decimal)currConfig["decY"];
-                num_koefReduct.Value = (decimal)currConfig["koefRedductionY"];
-                num_acc.Value = (decimal)currConfig["accY"];
-                num_zeroCode.Value = (decimal)currConfig["ZeroCodeY"];
-                
-            }
-            else // Ось Z
-            {
-                num_spd.Value = (decimal)currConfig["spdZ"];
-                num_dec.Value = (decimal)currConfig["decZ"];
-                num_koefReduct.Value = (decimal)currConfig["koefRedductionZ"];
-                num_acc.Value = (decimal)currConfig["accZ"];
-                num_zeroCode.Value = (decimal)currConfig["ZeroCodeZ"];
-            }
+                case 0:
+                    num_spd.Value = (decimal)currConfig["spdX"];
+                    num_dec.Value = (decimal)currConfig["decX"];
+                    num_koefReduct.Value = (decimal)currConfig["koefRedductionX"];
+                    num_acc.Value = (decimal)currConfig["accX"];
+                    num_zeroCode.Value = (decimal)currConfig["ZeroCodeX"];
+                    break;
+                case 1:
+                    num_spd.Value = (decimal)currConfig["spdY"];
+                    num_dec.Value = (decimal)currConfig["decY"];
+                    num_koefReduct.Value = (decimal)currConfig["koefRedductionY"];
+                    num_acc.Value = (decimal)currConfig["accY"];
+                    num_zeroCode.Value = (decimal)currConfig["ZeroCodeY"];
+                    break;
+                case 2:
+                    num_spd.Value = (decimal)currConfig["spdZ"];
+                    num_dec.Value = (decimal)currConfig["decZ"];
+                    num_koefReduct.Value = (decimal)currConfig["koefRedductionZ"];
+                    num_acc.Value = (decimal)currConfig["accZ"];
+                    num_zeroCode.Value = (decimal)currConfig["ZeroCodeZ"];
+                    break;
+        }// Ось Y
+            
+
+            
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -298,8 +310,6 @@ namespace Stepper.WinForms
                 case 1:
                     opCode = 1;
                     break;
-
-
             }
 
             /*
@@ -314,7 +324,10 @@ namespace Stepper.WinForms
                 0,
                 Byte.Parse(cb_microSteps.Text));
             */
-            serialController.SendSlipCommand(new byte[] {100,2,0,0}, serialController._serialPort);
+            ssp.SendGet(new byte[] { 0x03, 0x00, 0x18, 0x00});
+            
+            //serialController.SendSlipCommand(new byte[] {100,2,0,0}, serialController._serialPort);
         }
+
     }
 }

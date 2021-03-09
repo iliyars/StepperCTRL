@@ -76,7 +76,7 @@ namespace Stepper.BL.Controller
                     using (StreamWriter sw = new StreamWriter(_dataFilePath, true, System.Text.Encoding.Default))
                     {
                         time = time.AddMilliseconds(10.0);
-                        string timestr = time.ToString("mm:ss:ffff");
+                        string timestr = time.ToString("mm:ss:ff");
                         sw.WriteLine($"{timestr} {angleCode}");
                     }
                 }
@@ -103,14 +103,11 @@ namespace Stepper.BL.Controller
                     openNotePad.Start();
                     openNotePad.WaitForExit();
                 }
-                
             }
             else
             {
                 throw new Exception("Файл не найден");
             }
-            
-            
         }
 
         private void OpenNotePad_Exited(object sender, EventArgs e)
@@ -134,9 +131,7 @@ namespace Stepper.BL.Controller
                     {
                         rows++;
                     }
-
                 }
-
                 using (StreamReader sr = new StreamReader(configData.ConfigFilePath, Encoding.Default))
                 {
                     for(int i = 0; i < rows; i++)

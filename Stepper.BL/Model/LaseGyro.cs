@@ -7,15 +7,34 @@ namespace Stepper.BL.Model
 {
     public class LaserGyro
     {
+        public Commands currentCommand { get; set; }
+
         List<byte> msg = new List<byte>();
 
-        public int MasterAdress { get; }
-        public int SlaveAdress { get; }
 
-        public LaserGyro(int masterAdress, int slaveAdress)
+        public byte MasterAdress { get; }
+        public byte SlaveAdress { get; }
+
+        public LaserGyro(byte masterAdress, byte slaveAdress)
         {
             MasterAdress = masterAdress;
             SlaveAdress = slaveAdress;
+            currentCommand = Commands.NULL;
         }
+
+
+
+        public enum Commands
+        {
+            PING,
+            INIT,
+            ID,
+            WRITE,
+            GET,
+            PUT,
+            NULL
+        }
+
+        
     }
 }
