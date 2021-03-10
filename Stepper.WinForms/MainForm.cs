@@ -18,11 +18,11 @@ namespace Stepper.WinForms
         private bool dirY = true; // Направление вращения по Y
         private bool dirZ = true; // Направление вращения по Z
         private int newAng = 0;
-        ChartController chartController = new ChartController(6, 100);
+        ChartController chartController = new ChartController(7, 200);
+        TimerControl timerControl = new TimerControl();
 
         public MainForm()
         {
-             
             InitializeComponent();
             SetPorts();
             fileManager.ReadBinFile();
@@ -30,6 +30,7 @@ namespace Stepper.WinForms
             tb_fileName.Text = fileManager.GetFilePath();
             fileManager.FileClosed += FileManager_FileClosed;
             serialController.DataReceived += SerialController_DataReceived;
+            timerControl.Tick += TimerControl_Tick;
             btn_connect.Click += Btn_connect_Click;
             cb_writeFile.Click += Cb_writeFile_Click;
             btn_disconnect.Click += Btn_disconnect_Click;
@@ -40,7 +41,7 @@ namespace Stepper.WinForms
             chartX.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
             chartY.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
             chartZ.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
-
+            
             foreach (Control ctrl in gb_newPositionY.Controls)
             {
                 ctrl.Click += Ctrl_Click;
@@ -50,9 +51,11 @@ namespace Stepper.WinForms
                 ctrl.Click += CtrlNewZ_Click;
             }
             cb_axisSelect.SelectedIndex = 0;
+        }
 
-           
-           // setNumsFromConfigFile(cb_axisSelect.SelectedIndex);
+        private void TimerControl_Tick(object sender, EventArgs e)
+        {
+            l_stopWatch.Text = timerControl.CurrentElapsedTimeStr;
         }
 
         private void FileManager_FileClosed(object sender, EventArgs e)
@@ -65,13 +68,11 @@ namespace Stepper.WinForms
                 tb_text.AppendText($"{pair.Key}-{pair.Value}\n\n");
             }
             setNumsFromConfigFile(cb_axisSelect.SelectedIndex);
-
         }
 
         private void Btn_connect_Click(object sender, EventArgs e)
         {
             serialController.ConnectionSerial(cb_ports.Text, int.Parse(cb_boudRate.Text));
-            
           // ssp.ConnectSSP("COM6");
         }
         private void Btn_disconnect_Click(object sender, EventArgs e)
@@ -82,7 +83,6 @@ namespace Stepper.WinForms
         private void Cb_writeFile_Click(object sender, EventArgs e)
         {
             fileManager.CreateDataFile(cb_writeFile.Checked);
-           
         }
 
         /// <summary>
@@ -92,20 +92,17 @@ namespace Stepper.WinForms
         /// <param name="e"></param>
         private void SerialController_DataReceived(object sender, EventArgs e)
         {
-            chartController.UpdateChartsData(serialController.AngleCode[DeviceAddress.Xaxis],
-                                             serialController.AngleCode[DeviceAddress.Yaxis],
-                                             serialController.AngleCode[DeviceAddress.Zaxis]);
+            
             chartController.UpdateTime();
-
             this.BeginInvoke((Action)(() =>
             {
                 l_recevedCodeX.Text = serialController.AngleCode[DeviceAddress.Xaxis].ToString();
                 l_recevedCodeY.Text = serialController.AngleCode[DeviceAddress.Yaxis].ToString();
                 l_recevedCodeZ.Text = serialController.AngleCode[DeviceAddress.Zaxis].ToString();
-                chartController.ShowCharts(chartX, chartY, chartZ);
+                chartController.ShowCharts(chartX, serialController.AngleCode[DeviceAddress.Xaxis],
+                                           chartY, serialController.AngleCode[DeviceAddress.Yaxis],
+                                           chartZ, serialController.AngleCode[DeviceAddress.Zaxis]);
                 chartController.ShowTime(l_timeYstart, l_timeYEnd);
-                //chart2.Series["Series1"].Points.AddY((double)serialController.AngleCode[DeviceAddress.Yaxis]);
-               // tb_text.Text = $"{serialController.OperationCode}  {serialController.PlayLoad}  {serialController.CRC}";
             }));
             fileManager.WriteDataFile(cb_writeFile.Checked, serialController.AngleCode[DeviceAddress.Yaxis]);
         }
@@ -300,6 +297,7 @@ namespace Stepper.WinForms
 
         private void btn_startY_Click(object sender, EventArgs e)
         {
+            timerControl.StartTimer();
             byte opCode;
 
             switch (cb_axisSelect.SelectedIndex)
@@ -324,10 +322,11 @@ namespace Stepper.WinForms
                 0,
                 Byte.Parse(cb_microSteps.Text));
             */
-            ssp.SendGet(new byte[] { 0x03, 0x00, 0x18, 0x00});
-            
+            //ssp.SendGet(new byte[] { 0x03, 0x00, 0x18, 0x00});
+           
             //serialController.SendSlipCommand(new byte[] {100,2,0,0}, serialController._serialPort);
         }
+
 
     }
 }

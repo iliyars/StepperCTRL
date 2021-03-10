@@ -50,16 +50,17 @@ namespace Stepper.BL.Controller
             Array.Copy(axisCharts.YaxisData, 1, axisCharts.YaxisData, 0, axisCharts.Length - 1);
             Array.Copy(axisCharts.ZaxisData, 1, axisCharts.ZaxisData, 0, axisCharts.Length - 1);
         }
-        public void ShowCharts(Chart chartX, Chart chartY, Chart chartZ)
+        public void ShowCharts(Chart chartX, double dataX, Chart chartY, double dataY, Chart chartZ, double dataZ)
         {
-            chartX.Series["Series1"].Points.Clear();
-            chartY.Series["Series1"].Points.Clear();
-            chartZ.Series["Series1"].Points.Clear();
-            for (int i = 0; i < axisCharts.Length-1; i++)
+            chartX.Series[0].Points.AddY(dataX);
+            chartY.Series[0].Points.AddY(dataY);
+            chartZ.Series[0].Points.AddY(dataZ);
+
+            if(chartY.Series[0].Points.Count > axisCharts.Length)
             {
-               chartX.Series["Series1"].Points.AddY(axisCharts.XaxisData[i]);
-               chartY.Series["Series1"].Points.AddY(axisCharts.YaxisData[i]);
-               chartZ.Series["Series1"].Points.AddY(axisCharts.ZaxisData[i]);
+                chartX.Series[0].Points.RemoveAt(0);
+                chartY.Series[0].Points.RemoveAt(0);
+                chartZ.Series[0].Points.RemoveAt(0);
             }
         }
 

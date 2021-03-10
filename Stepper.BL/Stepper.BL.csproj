@@ -51,6 +51,7 @@
     <Compile Include="Controller\SerialController.cs" />
     <Compile Include="Controller\SlipBase.cs" />
     <Compile Include="Controller\SSP.cs" />
+    <Compile Include="Controller\TimerControl.cs" />
     <Compile Include="Model\Angle.cs" />
     <Compile Include="Model\AxisCharts.cs" />
     <Compile Include="Model\ConfigData.cs" />

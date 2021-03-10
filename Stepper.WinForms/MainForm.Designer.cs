@@ -132,7 +132,7 @@ namespace Stepper.WinForms
             this.label22 = new System.Windows.Forms.Label();
             this.btn_openCofigFile = new System.Windows.Forms.Button();
             this.btn_startY = new System.Windows.Forms.Button();
-            this.l_timeY = new System.Windows.Forms.Label();
+            this.l_stopWatch = new System.Windows.Forms.Label();
             this.tb_text = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -208,10 +208,10 @@ namespace Stepper.WinForms
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(5, 16);
-            this.btn_connect.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_connect.Location = new System.Drawing.Point(7, 20);
+            this.btn_connect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_connect.Name = "btn_connect";
-            this.btn_connect.Size = new System.Drawing.Size(84, 23);
+            this.btn_connect.Size = new System.Drawing.Size(112, 28);
             this.btn_connect.TabIndex = 0;
             this.btn_connect.Text = "Подключиться";
             this.btn_connect.UseVisualStyleBackColor = true;
@@ -219,10 +219,10 @@ namespace Stepper.WinForms
             // cb_ports
             // 
             this.cb_ports.FormattingEnabled = true;
-            this.cb_ports.Location = new System.Drawing.Point(107, 18);
-            this.cb_ports.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_ports.Location = new System.Drawing.Point(143, 22);
+            this.cb_ports.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_ports.Name = "cb_ports";
-            this.cb_ports.Size = new System.Drawing.Size(92, 21);
+            this.cb_ports.Size = new System.Drawing.Size(121, 24);
             this.cb_ports.TabIndex = 1;
             // 
             // cb_boudRate
@@ -233,19 +233,19 @@ namespace Stepper.WinForms
             "1000000",
             "2000000",
             "115200"});
-            this.cb_boudRate.Location = new System.Drawing.Point(107, 43);
-            this.cb_boudRate.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_boudRate.Location = new System.Drawing.Point(143, 53);
+            this.cb_boudRate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_boudRate.Name = "cb_boudRate";
-            this.cb_boudRate.Size = new System.Drawing.Size(92, 21);
+            this.cb_boudRate.Size = new System.Drawing.Size(121, 24);
             this.cb_boudRate.TabIndex = 2;
             // 
             // cb_writeFile
             // 
             this.cb_writeFile.AutoSize = true;
-            this.cb_writeFile.Location = new System.Drawing.Point(107, 68);
-            this.cb_writeFile.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_writeFile.Location = new System.Drawing.Point(143, 84);
+            this.cb_writeFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_writeFile.Name = "cb_writeFile";
-            this.cb_writeFile.Size = new System.Drawing.Size(112, 17);
+            this.cb_writeFile.Size = new System.Drawing.Size(142, 21);
             this.cb_writeFile.TabIndex = 4;
             this.cb_writeFile.Text = "Записать в файл";
             this.cb_writeFile.UseVisualStyleBackColor = true;
@@ -257,18 +257,21 @@ namespace Stepper.WinForms
             this.groupBox1.Controls.Add(this.cb_writeFile);
             this.groupBox1.Controls.Add(this.cb_ports);
             this.groupBox1.Controls.Add(this.cb_boudRate);
-            this.groupBox1.Location = new System.Drawing.Point(12, 10);
+            this.groupBox1.Location = new System.Drawing.Point(16, 12);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(228, 89);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(304, 110);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
             // btn_disconnect
             // 
-            this.btn_disconnect.Location = new System.Drawing.Point(5, 44);
+            this.btn_disconnect.Location = new System.Drawing.Point(7, 54);
+            this.btn_disconnect.Margin = new System.Windows.Forms.Padding(4);
             this.btn_disconnect.Name = "btn_disconnect";
-            this.btn_disconnect.Size = new System.Drawing.Size(84, 23);
+            this.btn_disconnect.Size = new System.Drawing.Size(112, 28);
             this.btn_disconnect.TabIndex = 6;
             this.btn_disconnect.Text = "Отключиться";
             this.btn_disconnect.UseVisualStyleBackColor = true;
@@ -279,9 +282,11 @@ namespace Stepper.WinForms
             this.gb_Yaxis.Controls.Add(this.groupBox3);
             this.gb_Yaxis.Controls.Add(this.gb_newPositionY);
             this.gb_Yaxis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gb_Yaxis.Location = new System.Drawing.Point(562, 12);
+            this.gb_Yaxis.Location = new System.Drawing.Point(749, 15);
+            this.gb_Yaxis.Margin = new System.Windows.Forms.Padding(4);
             this.gb_Yaxis.Name = "gb_Yaxis";
-            this.gb_Yaxis.Size = new System.Drawing.Size(297, 350);
+            this.gb_Yaxis.Padding = new System.Windows.Forms.Padding(4);
+            this.gb_Yaxis.Size = new System.Drawing.Size(396, 431);
             this.gb_Yaxis.TabIndex = 6;
             this.gb_Yaxis.TabStop = false;
             this.gb_Yaxis.Text = "Ось Y";
@@ -295,58 +300,66 @@ namespace Stepper.WinForms
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox4.Location = new System.Drawing.Point(6, 270);
+            this.groupBox4.Location = new System.Drawing.Point(8, 332);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(279, 72);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(372, 89);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Ошибка позиционирования";
             // 
             // tb_errSecY
             // 
-            this.tb_errSecY.Location = new System.Drawing.Point(176, 36);
+            this.tb_errSecY.Location = new System.Drawing.Point(235, 44);
+            this.tb_errSecY.Margin = new System.Windows.Forms.Padding(4);
             this.tb_errSecY.Name = "tb_errSecY";
-            this.tb_errSecY.Size = new System.Drawing.Size(76, 19);
+            this.tb_errSecY.Size = new System.Drawing.Size(100, 22);
             this.tb_errSecY.TabIndex = 3;
             // 
             // tb_errMinY
             // 
-            this.tb_errMinY.Location = new System.Drawing.Point(94, 36);
+            this.tb_errMinY.Location = new System.Drawing.Point(125, 44);
+            this.tb_errMinY.Margin = new System.Windows.Forms.Padding(4);
             this.tb_errMinY.Name = "tb_errMinY";
-            this.tb_errMinY.Size = new System.Drawing.Size(76, 19);
+            this.tb_errMinY.Size = new System.Drawing.Size(100, 22);
             this.tb_errMinY.TabIndex = 3;
             // 
             // tb_errGradY
             // 
-            this.tb_errGradY.Location = new System.Drawing.Point(16, 36);
+            this.tb_errGradY.Location = new System.Drawing.Point(21, 44);
+            this.tb_errGradY.Margin = new System.Windows.Forms.Padding(4);
             this.tb_errGradY.Name = "tb_errGradY";
-            this.tb_errGradY.Size = new System.Drawing.Size(76, 19);
+            this.tb_errGradY.Size = new System.Drawing.Size(100, 22);
             this.tb_errGradY.TabIndex = 3;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(182, 21);
+            this.label12.Location = new System.Drawing.Point(243, 26);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 13);
+            this.label12.Size = new System.Drawing.Size(65, 17);
             this.label12.TabIndex = 1;
             this.label12.Text = "Секунды";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(97, 21);
+            this.label13.Location = new System.Drawing.Point(129, 26);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.Size = new System.Drawing.Size(59, 17);
             this.label13.TabIndex = 1;
             this.label13.Text = "Минуты";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(14, 19);
+            this.label17.Location = new System.Drawing.Point(19, 23);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(50, 13);
+            this.label17.Size = new System.Drawing.Size(64, 17);
             this.label17.TabIndex = 1;
             this.label17.Text = "Градусы";
             // 
@@ -361,9 +374,11 @@ namespace Stepper.WinForms
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox3.Location = new System.Drawing.Point(6, 143);
+            this.groupBox3.Location = new System.Drawing.Point(8, 176);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(279, 120);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(372, 148);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Текущее положение";
@@ -371,67 +386,73 @@ namespace Stepper.WinForms
             // l_recevedCodeY
             // 
             this.l_recevedCodeY.AutoSize = true;
-            this.l_recevedCodeY.Location = new System.Drawing.Point(70, 80);
-            this.l_recevedCodeY.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.l_recevedCodeY.Location = new System.Drawing.Point(93, 98);
             this.l_recevedCodeY.Name = "l_recevedCodeY";
-            this.l_recevedCodeY.Size = new System.Drawing.Size(41, 13);
+            this.l_recevedCodeY.Size = new System.Drawing.Size(54, 17);
             this.l_recevedCodeY.TabIndex = 4;
             this.l_recevedCodeY.Text = "label23";
             // 
             // tb_currSecY
             // 
-            this.tb_currSecY.Location = new System.Drawing.Point(176, 38);
+            this.tb_currSecY.Location = new System.Drawing.Point(235, 47);
+            this.tb_currSecY.Margin = new System.Windows.Forms.Padding(4);
             this.tb_currSecY.Name = "tb_currSecY";
-            this.tb_currSecY.Size = new System.Drawing.Size(76, 19);
+            this.tb_currSecY.Size = new System.Drawing.Size(100, 22);
             this.tb_currSecY.TabIndex = 3;
             // 
             // tb_currMinY
             // 
-            this.tb_currMinY.Location = new System.Drawing.Point(95, 38);
+            this.tb_currMinY.Location = new System.Drawing.Point(127, 47);
+            this.tb_currMinY.Margin = new System.Windows.Forms.Padding(4);
             this.tb_currMinY.Name = "tb_currMinY";
-            this.tb_currMinY.Size = new System.Drawing.Size(76, 19);
+            this.tb_currMinY.Size = new System.Drawing.Size(100, 22);
             this.tb_currMinY.TabIndex = 3;
             // 
             // tb_currGradY
             // 
-            this.tb_currGradY.Location = new System.Drawing.Point(16, 38);
+            this.tb_currGradY.Location = new System.Drawing.Point(21, 47);
+            this.tb_currGradY.Margin = new System.Windows.Forms.Padding(4);
             this.tb_currGradY.Name = "tb_currGradY";
-            this.tb_currGradY.Size = new System.Drawing.Size(76, 19);
+            this.tb_currGradY.Size = new System.Drawing.Size(100, 22);
             this.tb_currGradY.TabIndex = 3;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(174, 21);
+            this.label6.Location = new System.Drawing.Point(232, 26);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 13);
+            this.label6.Size = new System.Drawing.Size(65, 17);
             this.label6.TabIndex = 1;
             this.label6.Text = "Секунды";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(94, 21);
+            this.label7.Location = new System.Drawing.Point(125, 26);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 13);
+            this.label7.Size = new System.Drawing.Size(59, 17);
             this.label7.TabIndex = 1;
             this.label7.Text = "Минуты";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 80);
+            this.label10.Location = new System.Drawing.Point(19, 98);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(54, 13);
+            this.label10.Size = new System.Drawing.Size(69, 17);
             this.label10.TabIndex = 1;
             this.label10.Text = "Код угла:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 19);
+            this.label11.Location = new System.Drawing.Point(19, 23);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 13);
+            this.label11.Size = new System.Drawing.Size(64, 17);
             this.label11.TabIndex = 1;
             this.label11.Text = "Градусы";
             // 
@@ -452,9 +473,11 @@ namespace Stepper.WinForms
             this.gb_newPositionY.Controls.Add(this.nud_minY);
             this.gb_newPositionY.Controls.Add(this.nud_gradY);
             this.gb_newPositionY.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gb_newPositionY.Location = new System.Drawing.Point(6, 16);
+            this.gb_newPositionY.Location = new System.Drawing.Point(8, 20);
+            this.gb_newPositionY.Margin = new System.Windows.Forms.Padding(4);
             this.gb_newPositionY.Name = "gb_newPositionY";
-            this.gb_newPositionY.Size = new System.Drawing.Size(279, 120);
+            this.gb_newPositionY.Padding = new System.Windows.Forms.Padding(4);
+            this.gb_newPositionY.Size = new System.Drawing.Size(372, 148);
             this.gb_newPositionY.TabIndex = 1;
             this.gb_newPositionY.TabStop = false;
             this.gb_newPositionY.Text = "Новое положение";
@@ -462,17 +485,17 @@ namespace Stepper.WinForms
             // l_newCodeY
             // 
             this.l_newCodeY.AutoSize = true;
-            this.l_newCodeY.Location = new System.Drawing.Point(334, 66);
-            this.l_newCodeY.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.l_newCodeY.Location = new System.Drawing.Point(445, 81);
             this.l_newCodeY.Name = "l_newCodeY";
-            this.l_newCodeY.Size = new System.Drawing.Size(0, 13);
+            this.l_newCodeY.Size = new System.Drawing.Size(0, 17);
             this.l_newCodeY.TabIndex = 3;
             // 
             // btn_MinAngY
             // 
-            this.btn_MinAngY.Location = new System.Drawing.Point(171, 61);
+            this.btn_MinAngY.Location = new System.Drawing.Point(228, 75);
+            this.btn_MinAngY.Margin = new System.Windows.Forms.Padding(4);
             this.btn_MinAngY.Name = "btn_MinAngY";
-            this.btn_MinAngY.Size = new System.Drawing.Size(75, 23);
+            this.btn_MinAngY.Size = new System.Drawing.Size(100, 28);
             this.btn_MinAngY.TabIndex = 2;
             this.btn_MinAngY.Text = "-8,30";
             this.btn_MinAngY.UseVisualStyleBackColor = true;
@@ -480,9 +503,10 @@ namespace Stepper.WinForms
             // 
             // btn_ZeroAngY
             // 
-            this.btn_ZeroAngY.Location = new System.Drawing.Point(87, 61);
+            this.btn_ZeroAngY.Location = new System.Drawing.Point(116, 75);
+            this.btn_ZeroAngY.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ZeroAngY.Name = "btn_ZeroAngY";
-            this.btn_ZeroAngY.Size = new System.Drawing.Size(75, 23);
+            this.btn_ZeroAngY.Size = new System.Drawing.Size(100, 28);
             this.btn_ZeroAngY.TabIndex = 2;
             this.btn_ZeroAngY.Text = "0";
             this.btn_ZeroAngY.UseVisualStyleBackColor = true;
@@ -490,9 +514,10 @@ namespace Stepper.WinForms
             // 
             // btn_MaxAngY
             // 
-            this.btn_MaxAngY.Location = new System.Drawing.Point(6, 61);
+            this.btn_MaxAngY.Location = new System.Drawing.Point(8, 75);
+            this.btn_MaxAngY.Margin = new System.Windows.Forms.Padding(4);
             this.btn_MaxAngY.Name = "btn_MaxAngY";
-            this.btn_MaxAngY.Size = new System.Drawing.Size(75, 23);
+            this.btn_MaxAngY.Size = new System.Drawing.Size(100, 28);
             this.btn_MaxAngY.TabIndex = 2;
             this.btn_MaxAngY.Text = "+8.30";
             this.btn_MaxAngY.UseVisualStyleBackColor = true;
@@ -500,9 +525,10 @@ namespace Stepper.WinForms
             // 
             // btn_dirY
             // 
-            this.btn_dirY.Location = new System.Drawing.Point(6, 34);
+            this.btn_dirY.Location = new System.Drawing.Point(8, 42);
+            this.btn_dirY.Margin = new System.Windows.Forms.Padding(4);
             this.btn_dirY.Name = "btn_dirY";
-            this.btn_dirY.Size = new System.Drawing.Size(22, 23);
+            this.btn_dirY.Size = new System.Drawing.Size(29, 28);
             this.btn_dirY.TabIndex = 2;
             this.btn_dirY.Text = "+";
             this.btn_dirY.UseVisualStyleBackColor = true;
@@ -511,91 +537,100 @@ namespace Stepper.WinForms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(200, 19);
+            this.label3.Location = new System.Drawing.Point(267, 23);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.Size = new System.Drawing.Size(65, 17);
             this.label3.TabIndex = 1;
             this.label3.Text = "Секунды";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(112, 19);
+            this.label2.Location = new System.Drawing.Point(149, 23);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.Size = new System.Drawing.Size(59, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Минуты";
             // 
             // l_stepsY
             // 
             this.l_stepsY.AutoSize = true;
-            this.l_stepsY.Location = new System.Drawing.Point(52, 98);
+            this.l_stepsY.Location = new System.Drawing.Point(69, 121);
+            this.l_stepsY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.l_stepsY.Name = "l_stepsY";
-            this.l_stepsY.Size = new System.Drawing.Size(75, 13);
+            this.l_stepsY.Size = new System.Drawing.Size(96, 17);
             this.l_stepsY.TabIndex = 1;
             this.l_stepsY.Text = "Кол-во шагов";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 96);
+            this.label5.Location = new System.Drawing.Point(19, 118);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.Size = new System.Drawing.Size(44, 17);
             this.label5.TabIndex = 1;
             this.label5.Text = "Шаги:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(144, 98);
+            this.label4.Location = new System.Drawing.Point(192, 121);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.Size = new System.Drawing.Size(69, 17);
             this.label4.TabIndex = 1;
             this.label4.Text = "Код угла:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 17);
+            this.label1.Location = new System.Drawing.Point(44, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Градусы";
             // 
             // nud_secY
             // 
-            this.nud_secY.Location = new System.Drawing.Point(202, 35);
+            this.nud_secY.Location = new System.Drawing.Point(269, 43);
+            this.nud_secY.Margin = new System.Windows.Forms.Padding(4);
             this.nud_secY.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
             this.nud_secY.Name = "nud_secY";
-            this.nud_secY.Size = new System.Drawing.Size(65, 19);
+            this.nud_secY.Size = new System.Drawing.Size(87, 22);
             this.nud_secY.TabIndex = 0;
             // 
             // nud_minY
             // 
-            this.nud_minY.Location = new System.Drawing.Point(114, 35);
+            this.nud_minY.Location = new System.Drawing.Point(152, 43);
+            this.nud_minY.Margin = new System.Windows.Forms.Padding(4);
             this.nud_minY.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
             this.nud_minY.Name = "nud_minY";
-            this.nud_minY.Size = new System.Drawing.Size(82, 19);
+            this.nud_minY.Size = new System.Drawing.Size(109, 22);
             this.nud_minY.TabIndex = 0;
             // 
             // nud_gradY
             // 
-            this.nud_gradY.Location = new System.Drawing.Point(33, 35);
+            this.nud_gradY.Location = new System.Drawing.Point(44, 43);
+            this.nud_gradY.Margin = new System.Windows.Forms.Padding(4);
             this.nud_gradY.Maximum = new decimal(new int[] {
             8,
             0,
             0,
             0});
             this.nud_gradY.Name = "nud_gradY";
-            this.nud_gradY.Size = new System.Drawing.Size(75, 19);
+            this.nud_gradY.Size = new System.Drawing.Size(100, 22);
             this.nud_gradY.TabIndex = 0;
             // 
             // gb_Zaxis
@@ -604,9 +639,11 @@ namespace Stepper.WinForms
             this.gb_Zaxis.Controls.Add(this.groupBox5);
             this.gb_Zaxis.Controls.Add(this.gb_newPosZ);
             this.gb_Zaxis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gb_Zaxis.Location = new System.Drawing.Point(865, 12);
+            this.gb_Zaxis.Location = new System.Drawing.Point(1153, 15);
+            this.gb_Zaxis.Margin = new System.Windows.Forms.Padding(4);
             this.gb_Zaxis.Name = "gb_Zaxis";
-            this.gb_Zaxis.Size = new System.Drawing.Size(297, 350);
+            this.gb_Zaxis.Padding = new System.Windows.Forms.Padding(4);
+            this.gb_Zaxis.Size = new System.Drawing.Size(396, 431);
             this.gb_Zaxis.TabIndex = 7;
             this.gb_Zaxis.TabStop = false;
             this.gb_Zaxis.Text = "Ось Z";
@@ -620,58 +657,66 @@ namespace Stepper.WinForms
             this.groupBox6.Controls.Add(this.label25);
             this.groupBox6.Controls.Add(this.label26);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox6.Location = new System.Drawing.Point(6, 272);
+            this.groupBox6.Location = new System.Drawing.Point(8, 335);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(279, 72);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Size = new System.Drawing.Size(372, 89);
             this.groupBox6.TabIndex = 7;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Ошибка позиционирования";
             // 
             // tb_errSecZ
             // 
-            this.tb_errSecZ.Location = new System.Drawing.Point(170, 36);
+            this.tb_errSecZ.Location = new System.Drawing.Point(227, 44);
+            this.tb_errSecZ.Margin = new System.Windows.Forms.Padding(4);
             this.tb_errSecZ.Name = "tb_errSecZ";
-            this.tb_errSecZ.Size = new System.Drawing.Size(76, 19);
+            this.tb_errSecZ.Size = new System.Drawing.Size(100, 22);
             this.tb_errSecZ.TabIndex = 3;
             // 
             // tb_errMinZ
             // 
-            this.tb_errMinZ.Location = new System.Drawing.Point(87, 36);
+            this.tb_errMinZ.Location = new System.Drawing.Point(116, 44);
+            this.tb_errMinZ.Margin = new System.Windows.Forms.Padding(4);
             this.tb_errMinZ.Name = "tb_errMinZ";
-            this.tb_errMinZ.Size = new System.Drawing.Size(76, 19);
+            this.tb_errMinZ.Size = new System.Drawing.Size(100, 22);
             this.tb_errMinZ.TabIndex = 3;
             // 
             // tb_errGradZ
             // 
-            this.tb_errGradZ.Location = new System.Drawing.Point(6, 36);
+            this.tb_errGradZ.Location = new System.Drawing.Point(8, 44);
+            this.tb_errGradZ.Margin = new System.Windows.Forms.Padding(4);
             this.tb_errGradZ.Name = "tb_errGradZ";
-            this.tb_errGradZ.Size = new System.Drawing.Size(76, 19);
+            this.tb_errGradZ.Size = new System.Drawing.Size(100, 22);
             this.tb_errGradZ.TabIndex = 3;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(168, 19);
+            this.label24.Location = new System.Drawing.Point(224, 23);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(51, 13);
+            this.label24.Size = new System.Drawing.Size(65, 17);
             this.label24.TabIndex = 1;
             this.label24.Text = "Секунды";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(85, 18);
+            this.label25.Location = new System.Drawing.Point(113, 22);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(46, 13);
+            this.label25.Size = new System.Drawing.Size(59, 17);
             this.label25.TabIndex = 1;
             this.label25.Text = "Минуты";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 19);
+            this.label26.Location = new System.Drawing.Point(8, 23);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(50, 13);
+            this.label26.Size = new System.Drawing.Size(64, 17);
             this.label26.TabIndex = 1;
             this.label26.Text = "Градусы";
             // 
@@ -689,9 +734,11 @@ namespace Stepper.WinForms
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox5.Location = new System.Drawing.Point(6, 143);
+            this.groupBox5.Location = new System.Drawing.Point(8, 176);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(279, 120);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(372, 148);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Текущее положение";
@@ -699,88 +746,97 @@ namespace Stepper.WinForms
             // l_recevedCodeZ
             // 
             this.l_recevedCodeZ.AutoSize = true;
-            this.l_recevedCodeZ.Location = new System.Drawing.Point(70, 87);
-            this.l_recevedCodeZ.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.l_recevedCodeZ.Location = new System.Drawing.Point(93, 107);
             this.l_recevedCodeZ.Name = "l_recevedCodeZ";
-            this.l_recevedCodeZ.Size = new System.Drawing.Size(41, 13);
+            this.l_recevedCodeZ.Size = new System.Drawing.Size(54, 17);
             this.l_recevedCodeZ.TabIndex = 5;
             this.l_recevedCodeZ.Text = "label23";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(369, 162);
+            this.textBox3.Location = new System.Drawing.Point(492, 199);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(120, 19);
+            this.textBox3.Size = new System.Drawing.Size(159, 22);
             this.textBox3.TabIndex = 3;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(243, 162);
+            this.textBox2.Location = new System.Drawing.Point(324, 199);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(120, 19);
+            this.textBox2.Size = new System.Drawing.Size(159, 22);
             this.textBox2.TabIndex = 3;
             // 
             // tb_currSecZ
             // 
-            this.tb_currSecZ.Location = new System.Drawing.Point(178, 38);
+            this.tb_currSecZ.Location = new System.Drawing.Point(237, 47);
+            this.tb_currSecZ.Margin = new System.Windows.Forms.Padding(4);
             this.tb_currSecZ.Name = "tb_currSecZ";
-            this.tb_currSecZ.Size = new System.Drawing.Size(76, 19);
+            this.tb_currSecZ.Size = new System.Drawing.Size(100, 22);
             this.tb_currSecZ.TabIndex = 3;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(117, 162);
+            this.textBox1.Location = new System.Drawing.Point(156, 199);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 19);
+            this.textBox1.Size = new System.Drawing.Size(159, 22);
             this.textBox1.TabIndex = 3;
             // 
             // tb_currMinZ
             // 
-            this.tb_currMinZ.Location = new System.Drawing.Point(97, 38);
+            this.tb_currMinZ.Location = new System.Drawing.Point(129, 47);
+            this.tb_currMinZ.Margin = new System.Windows.Forms.Padding(4);
             this.tb_currMinZ.Name = "tb_currMinZ";
-            this.tb_currMinZ.Size = new System.Drawing.Size(76, 19);
+            this.tb_currMinZ.Size = new System.Drawing.Size(100, 22);
             this.tb_currMinZ.TabIndex = 3;
             // 
             // tb_currGradZ
             // 
-            this.tb_currGradZ.Location = new System.Drawing.Point(16, 38);
+            this.tb_currGradZ.Location = new System.Drawing.Point(21, 47);
+            this.tb_currGradZ.Margin = new System.Windows.Forms.Padding(4);
             this.tb_currGradZ.Name = "tb_currGradZ";
-            this.tb_currGradZ.Size = new System.Drawing.Size(76, 19);
+            this.tb_currGradZ.Size = new System.Drawing.Size(100, 22);
             this.tb_currGradZ.TabIndex = 3;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(176, 21);
+            this.label8.Location = new System.Drawing.Point(235, 26);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 13);
+            this.label8.Size = new System.Drawing.Size(65, 17);
             this.label8.TabIndex = 1;
             this.label8.Text = "Секунды";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(94, 21);
+            this.label9.Location = new System.Drawing.Point(125, 26);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.Size = new System.Drawing.Size(59, 17);
             this.label9.TabIndex = 1;
             this.label9.Text = "Минуты";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(21, 87);
+            this.label16.Location = new System.Drawing.Point(28, 107);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(54, 13);
+            this.label16.Size = new System.Drawing.Size(69, 17);
             this.label16.TabIndex = 1;
             this.label16.Text = "Код угла:";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(14, 21);
+            this.label21.Location = new System.Drawing.Point(19, 26);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(50, 13);
+            this.label21.Size = new System.Drawing.Size(64, 17);
             this.label21.TabIndex = 1;
             this.label21.Text = "Градусы";
             // 
@@ -801,9 +857,11 @@ namespace Stepper.WinForms
             this.gb_newPosZ.Controls.Add(this.nud_minZ);
             this.gb_newPosZ.Controls.Add(this.nud_gradZ);
             this.gb_newPosZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gb_newPosZ.Location = new System.Drawing.Point(6, 19);
+            this.gb_newPosZ.Location = new System.Drawing.Point(8, 23);
+            this.gb_newPosZ.Margin = new System.Windows.Forms.Padding(4);
             this.gb_newPosZ.Name = "gb_newPosZ";
-            this.gb_newPosZ.Size = new System.Drawing.Size(279, 120);
+            this.gb_newPosZ.Padding = new System.Windows.Forms.Padding(4);
+            this.gb_newPosZ.Size = new System.Drawing.Size(372, 148);
             this.gb_newPosZ.TabIndex = 2;
             this.gb_newPosZ.TabStop = false;
             this.gb_newPosZ.Text = "Новое положение";
@@ -811,17 +869,17 @@ namespace Stepper.WinForms
             // l_newCodeZ
             // 
             this.l_newCodeZ.AutoSize = true;
-            this.l_newCodeZ.Location = new System.Drawing.Point(334, 66);
-            this.l_newCodeZ.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.l_newCodeZ.Location = new System.Drawing.Point(445, 81);
             this.l_newCodeZ.Name = "l_newCodeZ";
-            this.l_newCodeZ.Size = new System.Drawing.Size(0, 13);
+            this.l_newCodeZ.Size = new System.Drawing.Size(0, 17);
             this.l_newCodeZ.TabIndex = 3;
             // 
             // btn_minAngZ
             // 
-            this.btn_minAngZ.Location = new System.Drawing.Point(178, 61);
+            this.btn_minAngZ.Location = new System.Drawing.Point(237, 75);
+            this.btn_minAngZ.Margin = new System.Windows.Forms.Padding(4);
             this.btn_minAngZ.Name = "btn_minAngZ";
-            this.btn_minAngZ.Size = new System.Drawing.Size(75, 23);
+            this.btn_minAngZ.Size = new System.Drawing.Size(100, 28);
             this.btn_minAngZ.TabIndex = 2;
             this.btn_minAngZ.Text = "-8,30";
             this.btn_minAngZ.UseVisualStyleBackColor = true;
@@ -829,9 +887,10 @@ namespace Stepper.WinForms
             // 
             // btn_zeroAngZ
             // 
-            this.btn_zeroAngZ.Location = new System.Drawing.Point(97, 61);
+            this.btn_zeroAngZ.Location = new System.Drawing.Point(129, 75);
+            this.btn_zeroAngZ.Margin = new System.Windows.Forms.Padding(4);
             this.btn_zeroAngZ.Name = "btn_zeroAngZ";
-            this.btn_zeroAngZ.Size = new System.Drawing.Size(75, 23);
+            this.btn_zeroAngZ.Size = new System.Drawing.Size(100, 28);
             this.btn_zeroAngZ.TabIndex = 2;
             this.btn_zeroAngZ.Text = "0";
             this.btn_zeroAngZ.UseVisualStyleBackColor = true;
@@ -839,9 +898,10 @@ namespace Stepper.WinForms
             // 
             // btn_maxAngZ
             // 
-            this.btn_maxAngZ.Location = new System.Drawing.Point(16, 61);
+            this.btn_maxAngZ.Location = new System.Drawing.Point(21, 75);
+            this.btn_maxAngZ.Margin = new System.Windows.Forms.Padding(4);
             this.btn_maxAngZ.Name = "btn_maxAngZ";
-            this.btn_maxAngZ.Size = new System.Drawing.Size(75, 23);
+            this.btn_maxAngZ.Size = new System.Drawing.Size(100, 28);
             this.btn_maxAngZ.TabIndex = 2;
             this.btn_maxAngZ.Text = "+8.30";
             this.btn_maxAngZ.UseVisualStyleBackColor = true;
@@ -849,9 +909,10 @@ namespace Stepper.WinForms
             // 
             // btn_dirZ
             // 
-            this.btn_dirZ.Location = new System.Drawing.Point(6, 33);
+            this.btn_dirZ.Location = new System.Drawing.Point(8, 41);
+            this.btn_dirZ.Margin = new System.Windows.Forms.Padding(4);
             this.btn_dirZ.Name = "btn_dirZ";
-            this.btn_dirZ.Size = new System.Drawing.Size(22, 23);
+            this.btn_dirZ.Size = new System.Drawing.Size(29, 28);
             this.btn_dirZ.TabIndex = 2;
             this.btn_dirZ.Text = "+";
             this.btn_dirZ.UseVisualStyleBackColor = true;
@@ -860,91 +921,100 @@ namespace Stepper.WinForms
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(178, 19);
+            this.label14.Location = new System.Drawing.Point(237, 23);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(51, 13);
+            this.label14.Size = new System.Drawing.Size(65, 17);
             this.label14.TabIndex = 1;
             this.label14.Text = "Секунды";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(104, 19);
+            this.label15.Location = new System.Drawing.Point(139, 23);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 13);
+            this.label15.Size = new System.Drawing.Size(59, 17);
             this.label15.TabIndex = 1;
             this.label15.Text = "Минуты";
             // 
             // l_stepsZ
             // 
             this.l_stepsZ.AutoSize = true;
-            this.l_stepsZ.Location = new System.Drawing.Point(60, 98);
+            this.l_stepsZ.Location = new System.Drawing.Point(80, 121);
+            this.l_stepsZ.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.l_stepsZ.Name = "l_stepsZ";
-            this.l_stepsZ.Size = new System.Drawing.Size(75, 13);
+            this.l_stepsZ.Size = new System.Drawing.Size(96, 17);
             this.l_stepsZ.TabIndex = 1;
             this.l_stepsZ.Text = "Кол-во шагов";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(21, 98);
+            this.label18.Location = new System.Drawing.Point(28, 121);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(36, 13);
+            this.label18.Size = new System.Drawing.Size(44, 17);
             this.label18.TabIndex = 1;
             this.label18.Text = "Шаги:";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(172, 98);
+            this.label19.Location = new System.Drawing.Point(229, 121);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(54, 13);
+            this.label19.Size = new System.Drawing.Size(69, 17);
             this.label19.TabIndex = 1;
             this.label19.Text = "Код угла:";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(33, 19);
+            this.label20.Location = new System.Drawing.Point(44, 23);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(50, 13);
+            this.label20.Size = new System.Drawing.Size(64, 17);
             this.label20.TabIndex = 1;
             this.label20.Text = "Градусы";
             // 
             // nud_secZ
             // 
-            this.nud_secZ.Location = new System.Drawing.Point(180, 35);
+            this.nud_secZ.Location = new System.Drawing.Point(240, 43);
+            this.nud_secZ.Margin = new System.Windows.Forms.Padding(4);
             this.nud_secZ.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
             this.nud_secZ.Name = "nud_secZ";
-            this.nud_secZ.Size = new System.Drawing.Size(65, 19);
+            this.nud_secZ.Size = new System.Drawing.Size(87, 22);
             this.nud_secZ.TabIndex = 0;
             // 
             // nud_minZ
             // 
-            this.nud_minZ.Location = new System.Drawing.Point(106, 35);
+            this.nud_minZ.Location = new System.Drawing.Point(141, 43);
+            this.nud_minZ.Margin = new System.Windows.Forms.Padding(4);
             this.nud_minZ.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
             this.nud_minZ.Name = "nud_minZ";
-            this.nud_minZ.Size = new System.Drawing.Size(65, 19);
+            this.nud_minZ.Size = new System.Drawing.Size(87, 22);
             this.nud_minZ.TabIndex = 0;
             // 
             // nud_gradZ
             // 
-            this.nud_gradZ.Location = new System.Drawing.Point(33, 35);
+            this.nud_gradZ.Location = new System.Drawing.Point(44, 43);
+            this.nud_gradZ.Margin = new System.Windows.Forms.Padding(4);
             this.nud_gradZ.Maximum = new decimal(new int[] {
             8,
             0,
             0,
             0});
             this.nud_gradZ.Name = "nud_gradZ";
-            this.nud_gradZ.Size = new System.Drawing.Size(65, 19);
+            this.nud_gradZ.Size = new System.Drawing.Size(87, 22);
             this.nud_gradZ.TabIndex = 0;
             // 
             // gb_config
@@ -965,22 +1035,22 @@ namespace Stepper.WinForms
             this.gb_config.Controls.Add(this.label28);
             this.gb_config.Controls.Add(this.label22);
             this.gb_config.Controls.Add(this.btn_openCofigFile);
-            this.gb_config.Location = new System.Drawing.Point(9, 106);
-            this.gb_config.Margin = new System.Windows.Forms.Padding(2);
+            this.gb_config.Location = new System.Drawing.Point(12, 130);
+            this.gb_config.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gb_config.Name = "gb_config";
-            this.gb_config.Padding = new System.Windows.Forms.Padding(2);
-            this.gb_config.Size = new System.Drawing.Size(231, 381);
+            this.gb_config.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gb_config.Size = new System.Drawing.Size(308, 469);
             this.gb_config.TabIndex = 8;
             this.gb_config.TabStop = false;
             this.gb_config.Text = "Параметры ускорния";
             // 
             // tb_fileName
             // 
-            this.tb_fileName.Location = new System.Drawing.Point(35, 184);
-            this.tb_fileName.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_fileName.Location = new System.Drawing.Point(47, 226);
+            this.tb_fileName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_fileName.Name = "tb_fileName";
             this.tb_fileName.ReadOnly = true;
-            this.tb_fileName.Size = new System.Drawing.Size(128, 20);
+            this.tb_fileName.Size = new System.Drawing.Size(169, 22);
             this.tb_fileName.TabIndex = 14;
             // 
             // cb_axisSelect
@@ -990,19 +1060,19 @@ namespace Stepper.WinForms
             "X",
             "Y",
             "Z"});
-            this.cb_axisSelect.Location = new System.Drawing.Point(188, 16);
-            this.cb_axisSelect.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_axisSelect.Location = new System.Drawing.Point(251, 20);
+            this.cb_axisSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_axisSelect.Name = "cb_axisSelect";
-            this.cb_axisSelect.Size = new System.Drawing.Size(40, 21);
+            this.cb_axisSelect.Size = new System.Drawing.Size(52, 24);
             this.cb_axisSelect.TabIndex = 13;
             this.cb_axisSelect.SelectedIndexChanged += new System.EventHandler(this.cb_axisSelect_SelectedIndexChanged);
             // 
             // btn_chooseFile
             // 
-            this.btn_chooseFile.Location = new System.Drawing.Point(0, 237);
-            this.btn_chooseFile.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_chooseFile.Location = new System.Drawing.Point(0, 292);
+            this.btn_chooseFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_chooseFile.Name = "btn_chooseFile";
-            this.btn_chooseFile.Size = new System.Drawing.Size(162, 19);
+            this.btn_chooseFile.Size = new System.Drawing.Size(216, 23);
             this.btn_chooseFile.TabIndex = 12;
             this.btn_chooseFile.Text = "Выбрать файл настроек";
             this.btn_chooseFile.UseVisualStyleBackColor = true;
@@ -1019,138 +1089,137 @@ namespace Stepper.WinForms
             "16",
             "32",
             "64"});
-            this.cb_microSteps.Location = new System.Drawing.Point(126, 138);
-            this.cb_microSteps.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_microSteps.Location = new System.Drawing.Point(168, 170);
+            this.cb_microSteps.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_microSteps.Name = "cb_microSteps";
-            this.cb_microSteps.Size = new System.Drawing.Size(50, 21);
+            this.cb_microSteps.Size = new System.Drawing.Size(65, 24);
             this.cb_microSteps.TabIndex = 7;
             // 
             // num_acc
             // 
-            this.num_acc.Location = new System.Drawing.Point(126, 18);
+            this.num_acc.Location = new System.Drawing.Point(168, 22);
+            this.num_acc.Margin = new System.Windows.Forms.Padding(4);
             this.num_acc.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
             this.num_acc.Name = "num_acc";
-            this.num_acc.Size = new System.Drawing.Size(49, 20);
+            this.num_acc.Size = new System.Drawing.Size(65, 22);
             this.num_acc.TabIndex = 6;
             // 
             // num_koefReduct
             // 
-            this.num_koefReduct.Location = new System.Drawing.Point(126, 112);
+            this.num_koefReduct.Location = new System.Drawing.Point(168, 138);
+            this.num_koefReduct.Margin = new System.Windows.Forms.Padding(4);
             this.num_koefReduct.Maximum = new decimal(new int[] {
             200,
             0,
             0,
             0});
             this.num_koefReduct.Name = "num_koefReduct";
-            this.num_koefReduct.Size = new System.Drawing.Size(49, 20);
+            this.num_koefReduct.Size = new System.Drawing.Size(65, 22);
             this.num_koefReduct.TabIndex = 6;
             // 
             // num_zeroCode
             // 
-            this.num_zeroCode.Location = new System.Drawing.Point(126, 88);
+            this.num_zeroCode.Location = new System.Drawing.Point(168, 108);
+            this.num_zeroCode.Margin = new System.Windows.Forms.Padding(4);
             this.num_zeroCode.Maximum = new decimal(new int[] {
             66000,
             0,
             0,
             0});
             this.num_zeroCode.Name = "num_zeroCode";
-            this.num_zeroCode.Size = new System.Drawing.Size(49, 20);
+            this.num_zeroCode.Size = new System.Drawing.Size(65, 22);
             this.num_zeroCode.TabIndex = 6;
             // 
             // num_dec
             // 
-            this.num_dec.Location = new System.Drawing.Point(126, 63);
+            this.num_dec.Location = new System.Drawing.Point(168, 78);
+            this.num_dec.Margin = new System.Windows.Forms.Padding(4);
             this.num_dec.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
             this.num_dec.Name = "num_dec";
-            this.num_dec.Size = new System.Drawing.Size(49, 20);
+            this.num_dec.Size = new System.Drawing.Size(65, 22);
             this.num_dec.TabIndex = 6;
             // 
             // num_spd
             // 
-            this.num_spd.Location = new System.Drawing.Point(126, 40);
+            this.num_spd.Location = new System.Drawing.Point(168, 49);
+            this.num_spd.Margin = new System.Windows.Forms.Padding(4);
             this.num_spd.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
             this.num_spd.Name = "num_spd";
-            this.num_spd.Size = new System.Drawing.Size(49, 20);
+            this.num_spd.Size = new System.Drawing.Size(65, 22);
             this.num_spd.TabIndex = 6;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(4, 22);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Location = new System.Drawing.Point(5, 27);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(108, 13);
+            this.label27.Size = new System.Drawing.Size(133, 17);
             this.label27.TabIndex = 5;
             this.label27.Text = "Ускорение шаг/c^2";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(6, 145);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Location = new System.Drawing.Point(8, 178);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(59, 13);
+            this.label31.Size = new System.Drawing.Size(74, 17);
             this.label31.TabIndex = 5;
             this.label31.Text = "Микрошаг";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(6, 116);
-            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Location = new System.Drawing.Point(8, 143);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(95, 13);
+            this.label30.Size = new System.Drawing.Size(124, 17);
             this.label30.TabIndex = 5;
             this.label30.Text = "Коэфф. редукции";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(6, 92);
-            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Location = new System.Drawing.Point(8, 113);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(52, 13);
+            this.label29.Size = new System.Drawing.Size(68, 17);
             this.label29.TabIndex = 5;
             this.label29.Text = "Код нуля";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 70);
-            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Location = new System.Drawing.Point(8, 86);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(117, 13);
+            this.label28.Size = new System.Drawing.Size(145, 17);
             this.label28.TabIndex = 5;
             this.label28.Text = "Торможение шаг/c^2";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 44);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Location = new System.Drawing.Point(8, 54);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(88, 13);
+            this.label22.Size = new System.Drawing.Size(108, 17);
             this.label22.TabIndex = 5;
             this.label22.Text = "Скорость шаг/c";
             // 
             // btn_openCofigFile
             // 
-            this.btn_openCofigFile.Location = new System.Drawing.Point(0, 210);
-            this.btn_openCofigFile.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_openCofigFile.Location = new System.Drawing.Point(0, 258);
+            this.btn_openCofigFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_openCofigFile.Name = "btn_openCofigFile";
-            this.btn_openCofigFile.Size = new System.Drawing.Size(162, 19);
+            this.btn_openCofigFile.Size = new System.Drawing.Size(216, 23);
             this.btn_openCofigFile.TabIndex = 4;
             this.btn_openCofigFile.Text = "Открыть файл настроек";
             this.btn_openCofigFile.UseVisualStyleBackColor = true;
@@ -1159,32 +1228,32 @@ namespace Stepper.WinForms
             // btn_startY
             // 
             this.btn_startY.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_startY.Location = new System.Drawing.Point(1185, 137);
-            this.btn_startY.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_startY.Location = new System.Drawing.Point(1580, 169);
+            this.btn_startY.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_startY.Name = "btn_startY";
-            this.btn_startY.Size = new System.Drawing.Size(143, 55);
+            this.btn_startY.Size = new System.Drawing.Size(191, 68);
             this.btn_startY.TabIndex = 5;
             this.btn_startY.Text = "Старт";
             this.btn_startY.UseVisualStyleBackColor = true;
             this.btn_startY.Click += new System.EventHandler(this.btn_startY_Click);
             // 
-            // l_timeY
+            // l_stopWatch
             // 
-            this.l_timeY.AutoSize = true;
-            this.l_timeY.Location = new System.Drawing.Point(1183, 223);
-            this.l_timeY.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.l_timeY.Name = "l_timeY";
-            this.l_timeY.Size = new System.Drawing.Size(41, 13);
-            this.l_timeY.TabIndex = 7;
-            this.l_timeY.Text = "l_timeY";
+            this.l_stopWatch.AutoSize = true;
+            this.l_stopWatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.l_stopWatch.Location = new System.Drawing.Point(1577, 274);
+            this.l_stopWatch.Name = "l_stopWatch";
+            this.l_stopWatch.Size = new System.Drawing.Size(87, 32);
+            this.l_stopWatch.TabIndex = 7;
+            this.l_stopWatch.Text = "00:00";
             // 
             // tb_text
             // 
-            this.tb_text.Location = new System.Drawing.Point(1172, 12);
-            this.tb_text.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_text.Location = new System.Drawing.Point(1563, 15);
+            this.tb_text.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_text.Multiline = true;
             this.tb_text.Name = "tb_text";
-            this.tb_text.Size = new System.Drawing.Size(146, 74);
+            this.tb_text.Size = new System.Drawing.Size(193, 90);
             this.tb_text.TabIndex = 11;
             // 
             // openFileDialog1
@@ -1197,9 +1266,11 @@ namespace Stepper.WinForms
             this.groupBox10.Controls.Add(this.groupBox12);
             this.groupBox10.Controls.Add(this.groupBox13);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox10.Location = new System.Drawing.Point(259, 12);
+            this.groupBox10.Location = new System.Drawing.Point(345, 15);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(297, 350);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox10.Size = new System.Drawing.Size(396, 431);
             this.groupBox10.TabIndex = 6;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Ось X";
@@ -1213,58 +1284,66 @@ namespace Stepper.WinForms
             this.groupBox11.Controls.Add(this.label46);
             this.groupBox11.Controls.Add(this.label47);
             this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox11.Location = new System.Drawing.Point(6, 270);
+            this.groupBox11.Location = new System.Drawing.Point(8, 332);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(279, 72);
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox11.Size = new System.Drawing.Size(372, 89);
             this.groupBox11.TabIndex = 3;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Ошибка позиционирования";
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(176, 36);
+            this.textBox7.Location = new System.Drawing.Point(235, 44);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(76, 19);
+            this.textBox7.Size = new System.Drawing.Size(100, 22);
             this.textBox7.TabIndex = 3;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(94, 36);
+            this.textBox8.Location = new System.Drawing.Point(125, 44);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(76, 19);
+            this.textBox8.Size = new System.Drawing.Size(100, 22);
             this.textBox8.TabIndex = 3;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(16, 36);
+            this.textBox9.Location = new System.Drawing.Point(21, 44);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(4);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(76, 19);
+            this.textBox9.Size = new System.Drawing.Size(100, 22);
             this.textBox9.TabIndex = 3;
             // 
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(182, 21);
+            this.label45.Location = new System.Drawing.Point(243, 26);
+            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(51, 13);
+            this.label45.Size = new System.Drawing.Size(65, 17);
             this.label45.TabIndex = 1;
             this.label45.Text = "Секунды";
             // 
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(97, 21);
+            this.label46.Location = new System.Drawing.Point(129, 26);
+            this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(46, 13);
+            this.label46.Size = new System.Drawing.Size(59, 17);
             this.label46.TabIndex = 1;
             this.label46.Text = "Минуты";
             // 
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(14, 19);
+            this.label47.Location = new System.Drawing.Point(19, 23);
+            this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(50, 13);
+            this.label47.Size = new System.Drawing.Size(64, 17);
             this.label47.TabIndex = 1;
             this.label47.Text = "Градусы";
             // 
@@ -1279,9 +1358,11 @@ namespace Stepper.WinForms
             this.groupBox12.Controls.Add(this.label51);
             this.groupBox12.Controls.Add(this.label52);
             this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox12.Location = new System.Drawing.Point(6, 143);
+            this.groupBox12.Location = new System.Drawing.Point(8, 176);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(279, 120);
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox12.Size = new System.Drawing.Size(372, 148);
             this.groupBox12.TabIndex = 2;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Текущее положение";
@@ -1289,67 +1370,73 @@ namespace Stepper.WinForms
             // l_recevedCodeX
             // 
             this.l_recevedCodeX.AutoSize = true;
-            this.l_recevedCodeX.Location = new System.Drawing.Point(70, 80);
-            this.l_recevedCodeX.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.l_recevedCodeX.Location = new System.Drawing.Point(93, 98);
             this.l_recevedCodeX.Name = "l_recevedCodeX";
-            this.l_recevedCodeX.Size = new System.Drawing.Size(41, 13);
+            this.l_recevedCodeX.Size = new System.Drawing.Size(54, 17);
             this.l_recevedCodeX.TabIndex = 4;
             this.l_recevedCodeX.Text = "label23";
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(176, 38);
+            this.textBox10.Location = new System.Drawing.Point(235, 47);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(4);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(76, 19);
+            this.textBox10.Size = new System.Drawing.Size(100, 22);
             this.textBox10.TabIndex = 3;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(95, 38);
+            this.textBox11.Location = new System.Drawing.Point(127, 47);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(4);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(76, 19);
+            this.textBox11.Size = new System.Drawing.Size(100, 22);
             this.textBox11.TabIndex = 3;
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(16, 38);
+            this.textBox12.Location = new System.Drawing.Point(21, 47);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(4);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(76, 19);
+            this.textBox12.Size = new System.Drawing.Size(100, 22);
             this.textBox12.TabIndex = 3;
             // 
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(174, 21);
+            this.label49.Location = new System.Drawing.Point(232, 26);
+            this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(51, 13);
+            this.label49.Size = new System.Drawing.Size(65, 17);
             this.label49.TabIndex = 1;
             this.label49.Text = "Секунды";
             // 
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(94, 21);
+            this.label50.Location = new System.Drawing.Point(125, 26);
+            this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(46, 13);
+            this.label50.Size = new System.Drawing.Size(59, 17);
             this.label50.TabIndex = 1;
             this.label50.Text = "Минуты";
             // 
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(14, 80);
+            this.label51.Location = new System.Drawing.Point(19, 98);
+            this.label51.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(54, 13);
+            this.label51.Size = new System.Drawing.Size(69, 17);
             this.label51.TabIndex = 1;
             this.label51.Text = "Код угла:";
             // 
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(14, 19);
+            this.label52.Location = new System.Drawing.Point(19, 23);
+            this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(50, 13);
+            this.label52.Size = new System.Drawing.Size(64, 17);
             this.label52.TabIndex = 1;
             this.label52.Text = "Градусы";
             // 
@@ -1370,9 +1457,11 @@ namespace Stepper.WinForms
             this.groupBox13.Controls.Add(this.numericUpDown5);
             this.groupBox13.Controls.Add(this.numericUpDown6);
             this.groupBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox13.Location = new System.Drawing.Point(6, 16);
+            this.groupBox13.Location = new System.Drawing.Point(8, 20);
+            this.groupBox13.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(279, 120);
+            this.groupBox13.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox13.Size = new System.Drawing.Size(372, 148);
             this.groupBox13.TabIndex = 1;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Новое положение";
@@ -1380,17 +1469,17 @@ namespace Stepper.WinForms
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(334, 66);
-            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label53.Location = new System.Drawing.Point(445, 81);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(0, 13);
+            this.label53.Size = new System.Drawing.Size(0, 17);
             this.label53.TabIndex = 3;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(168, 61);
+            this.button5.Location = new System.Drawing.Point(224, 75);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(100, 28);
             this.button5.TabIndex = 2;
             this.button5.Text = "-8,30";
             this.button5.UseVisualStyleBackColor = true;
@@ -1398,9 +1487,10 @@ namespace Stepper.WinForms
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(87, 61);
+            this.button6.Location = new System.Drawing.Point(116, 75);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.Size = new System.Drawing.Size(100, 28);
             this.button6.TabIndex = 2;
             this.button6.Text = "0";
             this.button6.UseVisualStyleBackColor = true;
@@ -1408,9 +1498,10 @@ namespace Stepper.WinForms
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(6, 61);
+            this.button7.Location = new System.Drawing.Point(8, 75);
+            this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.Size = new System.Drawing.Size(100, 28);
             this.button7.TabIndex = 2;
             this.button7.Text = "+8.30";
             this.button7.UseVisualStyleBackColor = true;
@@ -1418,9 +1509,10 @@ namespace Stepper.WinForms
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(6, 34);
+            this.button8.Location = new System.Drawing.Point(8, 42);
+            this.button8.Margin = new System.Windows.Forms.Padding(4);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(22, 23);
+            this.button8.Size = new System.Drawing.Size(29, 28);
             this.button8.TabIndex = 2;
             this.button8.Text = "+";
             this.button8.UseVisualStyleBackColor = true;
@@ -1429,91 +1521,100 @@ namespace Stepper.WinForms
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(212, 17);
+            this.label54.Location = new System.Drawing.Point(283, 21);
+            this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(51, 13);
+            this.label54.Size = new System.Drawing.Size(65, 17);
             this.label54.TabIndex = 1;
             this.label54.Text = "Секунды";
             // 
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(118, 19);
+            this.label55.Location = new System.Drawing.Point(157, 23);
+            this.label55.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(46, 13);
+            this.label55.Size = new System.Drawing.Size(59, 17);
             this.label55.TabIndex = 1;
             this.label55.Text = "Минуты";
             // 
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(52, 98);
+            this.label56.Location = new System.Drawing.Point(69, 121);
+            this.label56.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(75, 13);
+            this.label56.Size = new System.Drawing.Size(96, 17);
             this.label56.TabIndex = 1;
             this.label56.Text = "Кол-во шагов";
             // 
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(14, 96);
+            this.label57.Location = new System.Drawing.Point(19, 118);
+            this.label57.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(36, 13);
+            this.label57.Size = new System.Drawing.Size(44, 17);
             this.label57.TabIndex = 1;
             this.label57.Text = "Шаги:";
             // 
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(144, 98);
+            this.label58.Location = new System.Drawing.Point(192, 121);
+            this.label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(54, 13);
+            this.label58.Size = new System.Drawing.Size(69, 17);
             this.label58.TabIndex = 1;
             this.label58.Text = "Код угла:";
             // 
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(41, 19);
+            this.label59.Location = new System.Drawing.Point(55, 23);
+            this.label59.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(50, 13);
+            this.label59.Size = new System.Drawing.Size(64, 17);
             this.label59.TabIndex = 1;
             this.label59.Text = "Градусы";
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(203, 35);
+            this.numericUpDown4.Location = new System.Drawing.Point(271, 43);
+            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
             this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(65, 19);
+            this.numericUpDown4.Size = new System.Drawing.Size(87, 22);
             this.numericUpDown4.TabIndex = 0;
             // 
             // numericUpDown5
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(115, 35);
+            this.numericUpDown5.Location = new System.Drawing.Point(153, 43);
+            this.numericUpDown5.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown5.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
             this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(82, 19);
+            this.numericUpDown5.Size = new System.Drawing.Size(109, 22);
             this.numericUpDown5.TabIndex = 0;
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(34, 35);
+            this.numericUpDown6.Location = new System.Drawing.Point(45, 43);
+            this.numericUpDown6.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown6.Maximum = new decimal(new int[] {
             8,
             0,
             0,
             0});
             this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDown6.Size = new System.Drawing.Size(100, 22);
             this.numericUpDown6.TabIndex = 0;
             // 
             // chartY
@@ -1523,20 +1624,20 @@ namespace Stepper.WinForms
             legend1.Enabled = false;
             legend1.Name = "Legend1";
             this.chartY.Legends.Add(legend1);
-            this.chartY.Location = new System.Drawing.Point(552, 362);
-            this.chartY.Margin = new System.Windows.Forms.Padding(20);
+            this.chartY.Location = new System.Drawing.Point(736, 446);
+            this.chartY.Margin = new System.Windows.Forms.Padding(27, 25, 27, 25);
             this.chartY.Name = "chartY";
             this.chartY.RightToLeft = System.Windows.Forms.RightToLeft.No;
             series1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.BottomRight;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series1.IsXValueIndexed = true;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             series1.YValuesPerPoint = 2;
             this.chartY.Series.Add(series1);
-            this.chartY.Size = new System.Drawing.Size(325, 243);
+            this.chartY.Size = new System.Drawing.Size(433, 299);
             this.chartY.TabIndex = 13;
             this.chartY.Text = "chart2";
             this.chartY.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
@@ -1545,26 +1646,29 @@ namespace Stepper.WinForms
             // 
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(0, 0);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(41, 13);
+            this.label23.Size = new System.Drawing.Size(54, 17);
             this.label23.TabIndex = 14;
             this.label23.Text = "label23";
             // 
             // l_timeYstart
             // 
             this.l_timeYstart.AutoSize = true;
-            this.l_timeYstart.Location = new System.Drawing.Point(577, 583);
+            this.l_timeYstart.Location = new System.Drawing.Point(769, 718);
+            this.l_timeYstart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.l_timeYstart.Name = "l_timeYstart";
-            this.l_timeYstart.Size = new System.Drawing.Size(41, 13);
+            this.l_timeYstart.Size = new System.Drawing.Size(54, 17);
             this.l_timeYstart.TabIndex = 15;
             this.l_timeYstart.Text = "label32";
             // 
             // l_timeYEnd
             // 
             this.l_timeYEnd.AutoSize = true;
-            this.l_timeYEnd.Location = new System.Drawing.Point(824, 583);
+            this.l_timeYEnd.Location = new System.Drawing.Point(1099, 718);
+            this.l_timeYEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.l_timeYEnd.Name = "l_timeYEnd";
-            this.l_timeYEnd.Size = new System.Drawing.Size(53, 13);
+            this.l_timeYEnd.Size = new System.Drawing.Size(70, 17);
             this.l_timeYEnd.TabIndex = 16;
             this.l_timeYEnd.Text = "l_timeEnd";
             // 
@@ -1575,20 +1679,20 @@ namespace Stepper.WinForms
             legend2.Enabled = false;
             legend2.Name = "Legend1";
             this.chartX.Legends.Add(legend2);
-            this.chartX.Location = new System.Drawing.Point(244, 362);
-            this.chartX.Margin = new System.Windows.Forms.Padding(20);
+            this.chartX.Location = new System.Drawing.Point(325, 446);
+            this.chartX.Margin = new System.Windows.Forms.Padding(27, 25, 27, 25);
             this.chartX.Name = "chartX";
             this.chartX.RightToLeft = System.Windows.Forms.RightToLeft.No;
             series2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.BottomRight;
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastPoint;
             series2.IsXValueIndexed = true;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             series2.YValuesPerPoint = 2;
             this.chartX.Series.Add(series2);
-            this.chartX.Size = new System.Drawing.Size(325, 243);
+            this.chartX.Size = new System.Drawing.Size(433, 299);
             this.chartX.TabIndex = 17;
             this.chartX.Text = "chart2";
             this.chartX.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
@@ -1600,29 +1704,29 @@ namespace Stepper.WinForms
             legend3.Enabled = false;
             legend3.Name = "Legend1";
             this.chartZ.Legends.Add(legend3);
-            this.chartZ.Location = new System.Drawing.Point(871, 362);
-            this.chartZ.Margin = new System.Windows.Forms.Padding(20);
+            this.chartZ.Location = new System.Drawing.Point(1161, 446);
+            this.chartZ.Margin = new System.Windows.Forms.Padding(27, 25, 27, 25);
             this.chartZ.Name = "chartZ";
             this.chartZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
             series3.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.BottomRight;
             series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastPoint;
             series3.IsXValueIndexed = true;
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             series3.YValuesPerPoint = 2;
             this.chartZ.Series.Add(series3);
-            this.chartZ.Size = new System.Drawing.Size(325, 243);
+            this.chartZ.Size = new System.Drawing.Size(433, 299);
             this.chartZ.TabIndex = 18;
             this.chartZ.Text = "chart2";
             this.chartZ.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 633);
+            this.ClientSize = new System.Drawing.Size(1760, 779);
             this.Controls.Add(this.chartZ);
             this.Controls.Add(this.chartX);
             this.Controls.Add(this.l_timeYEnd);
@@ -1630,14 +1734,14 @@ namespace Stepper.WinForms
             this.Controls.Add(this.label23);
             this.Controls.Add(this.chartY);
             this.Controls.Add(this.tb_text);
-            this.Controls.Add(this.l_timeY);
+            this.Controls.Add(this.l_stopWatch);
             this.Controls.Add(this.gb_config);
             this.Controls.Add(this.btn_startY);
             this.Controls.Add(this.gb_Zaxis);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.gb_Yaxis);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -1755,7 +1859,7 @@ namespace Stepper.WinForms
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label l_timeY;
+        private System.Windows.Forms.Label l_stopWatch;
         private System.Windows.Forms.Button btn_startY;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox tb_errSecZ;
